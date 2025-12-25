@@ -1,16 +1,56 @@
-# React + Vite
+# Nurasa Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Ada Cerita di Setiap Rasa**
 
-Currently, two official plugins are available:
+Landing page premium untuk Nurasa - brand jajanan kering premium Nusantara yang menghadirkan cita rasa pedas berkelas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## React Compiler
+- **Premium Design** - Desain elegan dengan palet warna warm & sophisticated
+- **Product Showcase** - Display 3 varian Basreng Premium (Original, Pedas, Extra Pedas)
+- **Brand Storytelling** - Filosofi NUR + RASA yang menceritakan perjalanan brand
+- **Multi-Channel CTA** - WhatsApp, Shopee, dan social media integration
+- **Responsive** - Mobile-first design yang optimal di semua device
+- **SEO Optimized** - Meta tags dan semantic HTML untuk visibility
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **React** - UI library
+- **Vite** - Build tool & dev server
+- **Tailwind CSS v3** - Utility-first CSS framework
+- **Custom Animations** - Smooth transitions dan hover effects
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 🎨 Brand Colors
+
+- **Deep Cocoa** - `#3D2314`
+- **Warm Cream** - `#FAF6F1`
+- **Ivory** - `#FFFDF9`
+- **Accent Amber** - `#C45C26`
+- **Accent Red** - `#8B2C1A`
+
+## 📧 Contact
+
+- **Email**: halo@nurasa.store
+- **WhatsApp**: +62 851-3714-3942
+- **Instagram**: [@nurasa.store](https://instagram.com/nurasa.store)
+- **Shopee**: [nurasa.store](https://shopee.co.id/nurasa.store)
+
+## 📄 License
+
+© 2025 Nurasa. All rights reserved.
