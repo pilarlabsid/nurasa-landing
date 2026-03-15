@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import logoN from '../assets/logo/N.png';
+import { Link, useLocation } from 'react-router-dom';
 import logoText from '../assets/logo/NurasaText.png';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const location = useLocation();
+    const isHomePage = location.pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,11 +17,11 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Beranda', href: '#beranda' },
-        { name: 'Filosofi', href: '#filosofi' },
-        { name: 'Produk', href: '#produk' },
-        { name: 'Cerita', href: '#cerita' },
-        { name: 'Kontak', href: '#kontak' },
+        { name: 'Beranda', href: isHomePage ? '#beranda' : '/' },
+        { name: 'Filosofi', href: isHomePage ? '#filosofi' : '/#filosofi' },
+        { name: 'Katalog', href: '/katalog' },
+        { name: 'Cerita', href: isHomePage ? '#cerita' : '/#cerita' },
+        { name: 'Kontak', href: isHomePage ? '#kontak' : '/#kontak' },
     ];
 
     return (
@@ -32,7 +34,7 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <a href="#beranda" className="flex items-start">
+                    <Link to="/" className="flex items-start">
                         <div className="flex flex-col justify-start">
                             <img
                                 src={logoText}
@@ -41,7 +43,7 @@ const Navbar = () => {
                             />
                             <p className="text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
                         </div>
-                    </a>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-8">
@@ -59,9 +61,9 @@ const Navbar = () => {
 
                     {/* CTA Button */}
                     <div className="hidden md:block">
-                        <a href="#produk" className="btn-primary text-sm">
-                            Jelajahi Produk
-                        </a>
+                        <Link to="/katalog" className="btn-primary text-sm px-6 py-2.5">
+                            Lihat Katalog
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -111,14 +113,15 @@ const Navbar = () => {
                                 {link.name}
                             </a>
                         ))}
-                        <a href="#produk" className="btn-primary w-full text-center text-sm mt-4">
-                            Jelajahi Produk
-                        </a>
+                        <Link to="/katalog" className="btn-primary w-full text-center text-sm mt-4 block py-3">
+                            Lihat Katalog
+                        </Link>
                     </div>
                 </div>
             </div>
         </nav>
     );
 };
+
 
 export default Navbar;

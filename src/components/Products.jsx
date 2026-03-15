@@ -1,60 +1,9 @@
-import originalImg from '../assets/products/Original.jpg';
-import pedasImg from '../assets/products/Pedas.jpg';
-import extraPedasImg from '../assets/products/Extra Pedas.jpg';
+import { Link } from 'react-router-dom';
+import { products } from '../data/products';
 
 const Products = () => {
-    const products = [
-        {
-            name: 'Basreng Original',
-            tagline: 'Gurih Aromatik Daun Jeruk',
-            description: 'Bumbu gurih khas daun jeruk yang harum. Keriuk renyah dengan aroma segar yang cocok untuk semua kalangan.',
-            features: ['Bumbu Daun Jeruk', 'Renyah Sempurna', 'Premium Quality'],
-            badge: 'Best Seller',
-            level: 0,
-            image: originalImg,
-        },
-        {
-            name: 'Basreng Pedas',
-            tagline: 'Pedas yang Membelai',
-            description: 'Sensasi pedas yang pas dan nikmat. Perpaduan bumbu gurih dengan cabai pilihan yang memberikan kehangatan di setiap gigitan.',
-            features: ['Cabai Pilihan', 'Pedas Seimbang', 'Renyah Krispi'],
-            badge: 'Favorite',
-            level: 1,
-            image: pedasImg,
-        },
-        {
-            name: 'Basreng Extra Pedas',
-            tagline: 'Untuk Pecinta Pedas Sejati',
-            description: 'Level pedas maksimal untuk Anda yang berani! Racikan cabai ekstra dengan bumbu khas yang membuat ketagihan.',
-            features: ['Extra Cabai', 'Pedas Nampol', 'Sensasi Maksimal'],
-            badge: 'Hot!',
-            level: 2,
-            image: extraPedasImg,
-        },
-    ];
-
-    const SpicyLevel = ({ level }) => {
-        return (
-            <div className="flex items-center gap-1">
-                {[...Array(3)].map((_, i) => (
-                    <div
-                        key={i}
-                        className={`w-2 h-2 rounded-full ${i <= level
-                            ? level === 2
-                                ? 'bg-accent-red'
-                                : level === 1
-                                    ? 'bg-accent-amber'
-                                    : 'bg-cocoa-light'
-                            : 'bg-deep-cocoa/20'
-                            }`}
-                    />
-                ))}
-                <span className="text-xs text-cocoa-light ml-1">
-                    {level === 0 ? 'Tidak Pedas' : level === 1 ? 'Pedas' : 'Extra Pedas'}
-                </span>
-            </div>
-        );
-    };
+    // Show first 3 products as featured (or mix of categories)
+    const featuredProducts = [products[1], products[3], products[4]]; // Pedas, Caramel, Cheese
 
     return (
         <section id="produk" className="relative py-32 bg-warm-cream overflow-hidden">
@@ -65,26 +14,26 @@ const Products = () => {
                 {/* Section Header */}
                 <div className="text-center mb-20">
                     <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-sm mb-4">
-                        Koleksi Rasa
+                        Koleksi Unggulan
                     </p>
                     <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-deep-cocoa mb-6">
-                        Basreng <span className="italic text-accent-amber">Premium</span>
+                        Produk <span className="italic text-accent-amber">Pilihan</span> Kami
                     </h2>
                     <p className="max-w-2xl mx-auto text-cocoa-light text-lg">
-                        Bakso goreng renyah dengan bumbu pilihan. Tersedia dalam 3 level rasa
-                        untuk menemani setiap momen bersantai Anda.
+                        Dari Basreng yang renyah hingga Popcorn Gourmet yang lumer. 
+                        Temukan camilan yang paling pas untuk harimu.
                     </p>
                 </div>
 
                 {/* Products Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {products.map((product, index) => (
+                    {featuredProducts.map((product) => (
                         <div
-                            key={product.name}
-                            className="group relative bg-ivory rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3"
+                            key={product.id}
+                            className="group relative bg-ivory rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full"
                         >
                             {/* Product Image */}
-                            <div className="relative h-72 overflow-hidden">
+                            <div className="relative h-72 overflow-hidden shrink-0">
                                 <img
                                     src={product.image}
                                     alt={product.name}
@@ -95,54 +44,58 @@ const Products = () => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-deep-cocoa/40 via-transparent to-transparent"></div>
 
                                 {/* Badge */}
-                                <span className={`absolute top-4 right-4 text-ivory text-xs font-medium px-4 py-1.5 rounded-full ${product.level === 2 ? 'bg-accent-red' : 'bg-accent-amber'
+                                <span className={`absolute top-4 right-4 text-ivory text-xs font-medium px-4 py-1.5 rounded-full ${product.badge === 'Hot!' || product.badge === 'New Arrival' ? 'bg-accent-red' : 'bg-accent-amber'
                                     }`}>
                                     {product.badge}
                                 </span>
                             </div>
 
                             {/* Content */}
-                            <div className="p-8">
-                                {/* Spicy Level Indicator */}
-                                <div className="mb-3">
-                                    <SpicyLevel level={product.level} />
-                                </div>
+                            <div className="p-8 flex flex-col flex-grow">
+                                {/* Category */}
+                                <span className="text-[10px] font-bold tracking-widest uppercase text-accent-amber mb-2 block">
+                                    {product.category}
+                                </span>
 
-                                <p className="text-accent-amber text-sm font-medium tracking-wider mb-2">
-                                    {product.tagline}
-                                </p>
-                                <h3 className="font-serif text-2xl font-bold text-deep-cocoa mb-4 group-hover:text-accent-amber transition-colors duration-300">
+                                <h3 className="font-serif text-2xl font-bold text-deep-cocoa mb-2 group-hover:text-accent-amber transition-colors duration-300">
                                     {product.name}
                                 </h3>
-                                <p className="text-cocoa-light text-sm leading-relaxed mb-6">
+                                <p className="text-cocoa-light text-sm italic mb-4">
+                                    {product.tagline}
+                                </p>
+                                
+                                <p className="text-cocoa-light text-sm leading-relaxed mb-6 line-clamp-2">
                                     {product.description}
                                 </p>
 
-                                {/* Features */}
-                                <div className="flex flex-wrap gap-2 mb-6">
-                                    {product.features.map((feature) => (
-                                        <span
-                                            key={feature}
-                                            className="text-xs px-3 py-1 rounded-full bg-warm-cream text-deep-cocoa border border-deep-cocoa/10"
-                                        >
-                                            {feature}
-                                        </span>
-                                    ))}
-                                </div>
-
                                 {/* CTA */}
-                                <a
-                                    href={`https://wa.me/6285137143942?text=Halo%20Nurasa,%20saya%20ingin%20pesan%20${encodeURIComponent(product.name)}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full btn-secondary text-sm py-3 group-hover:bg-deep-cocoa group-hover:text-ivory group-hover:border-deep-cocoa transition-all duration-300 text-center"
-                                >
-                                    Pesan Sekarang
-                                </a>
+                                <div className="flex items-center justify-between gap-4 mt-auto pt-6 border-t border-deep-cocoa/5">
+                                    <p className="font-bold text-deep-cocoa">{product.price}</p>
+                                    <Link
+                                        to="/katalog"
+                                        className="text-accent-amber text-sm font-bold flex items-center gap-2 group/link"
+                                    >
+                                        Detail
+                                        <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     ))}
                 </div>
+
+                {/* View All Button */}
+                <div className="mt-16 text-center">
+                    <Link 
+                        to="/katalog" 
+                        className="btn-primary"
+                    >
+                        Lihat Semua Produk
+                    </Link>
+                </div>
+
 
                 {/* Gift Ready Section */}
                 <div className="mt-20 text-center">
