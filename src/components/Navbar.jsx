@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logoText from '../assets/logo/NurasaText.png';
+import logoText from '../assets/logo/NurasaText.webp';
+import { useCart } from '../context/CartContext';
+import CartDrawer from './CartDrawer';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
     const location = useLocation();
+    const { cartCount } = useCart();
     const isHomePage = location.pathname === '/';
 
     useEffect(() => {
@@ -17,109 +21,143 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Beranda', href: isHomePage ? '#beranda' : '/' },
-        { name: 'Filosofi', href: isHomePage ? '#filosofi' : '/#filosofi' },
+        { name: 'Beranda', href: '/' },
         { name: 'Katalog', href: '/katalog' },
-        { name: 'Cerita', href: isHomePage ? '#cerita' : '/#cerita' },
-        { name: 'Kontak', href: isHomePage ? '#kontak' : '/#kontak' },
+        { name: 'Tentang Kami', href: '/tentang' },
+        { name: 'Kontak', href: '/kontak' },
     ];
 
     return (
-        <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                ? 'bg-warm-cream/95 backdrop-blur-md shadow-lg py-4'
-                : 'bg-transparent py-6'
-                }`}
-        >
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <Link to="/" className="flex items-start">
-                        <div className="flex flex-col justify-start">
-                            <img
-                                src={logoText}
-                                alt="Nurasa"
-                                className="h-8 object-contain object-left mb-0.5 hover:scale-105 transition-transform duration-300"
-                            />
-                            <p className="text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
+        <>
+            <nav
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+                    ? 'bg-warm-cream/95 backdrop-blur-md shadow-lg py-4'
+                    : 'bg-transparent py-6'
+                    }`}
+            >
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="flex items-center justify-between">
+                        {/* Logo */}
+                        <Link to="/" className="flex items-start">
+                            <div className="flex flex-col justify-start">
+                                <img
+                                    src={logoText}
+                                    alt="Nurasa"
+                                    className="h-8 object-contain object-left mb-0.5 hover:scale-105 transition-transform duration-300"
+                                />
+                                <p className="text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
+                            </div>
+                        </Link>
+
+                        {/* Desktop Navigation */}
+                        <div className="hidden md:flex items-center gap-8">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    to={link.href}
+                                    className="relative text-deep-cocoa font-medium hover:text-accent-amber transition-colors duration-300 group"
+                                >
+                                    {link.name}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-amber transition-all duration-300 group-hover:w-full"></span>
+                                </Link>
+                            ))}
                         </div>
-                    </Link>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-8">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="relative text-deep-cocoa font-medium hover:text-accent-amber transition-colors duration-300 group"
+                        {/* Actions */}
+                        <div className="hidden md:flex items-center gap-4">
+                            <button 
+                                onClick={() => setIsCartOpen(true)}
+                                className="relative p-2 text-deep-cocoa hover:text-accent-amber transition-colors group"
+                                aria-label="Buka keranjang"
                             >
-                                {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-amber transition-all duration-300 group-hover:w-full"></span>
-                            </a>
-                        ))}
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                </svg>
+                                {cartCount > 0 && (
+                                    <span className="absolute -top-1 -right-1 bg-accent-red text-ivory text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-warm-cream animate-fade-in">
+                                        {cartCount}
+                                    </span>
+                                )}
+                            </button>
+                            <Link to="/katalog" className="btn-primary text-sm px-6 py-2.5">
+                                Lihat Katalog
+                            </Link>
+                        </div>
+
+                        {/* Mobile Controls */}
+                        <div className="flex items-center gap-2 md:hidden">
+                            <button 
+                                onClick={() => setIsCartOpen(true)}
+                                className="relative p-2 text-deep-cocoa"
+                                aria-label="Buka keranjang"
+                            >
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                </svg>
+                                {cartCount > 0 && (
+                                    <span className="absolute -top-0.5 -right-0.5 bg-accent-red text-ivory text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full border-2 border-warm-cream">
+                                        {cartCount}
+                                    </span>
+                                )}
+                            </button>
+                            <button
+                                className="text-deep-cocoa p-2"
+                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                aria-label="Toggle menu"
+                            >
+                                <svg
+                                    className="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    {isMobileMenuOpen ? (
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
+                                    ) : (
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M4 6h16M4 12h16M4 18h16"
+                                        />
+                                    )}
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
-                    {/* CTA Button */}
-                    <div className="hidden md:block">
-                        <Link to="/katalog" className="btn-primary text-sm px-6 py-2.5">
-                            Lihat Katalog
-                        </Link>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden text-deep-cocoa p-2"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        aria-label="Toggle menu"
+                    {/* Mobile Menu */}
+                    <div
+                        className={`md:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 mt-6' : 'max-h-0'
+                            }`}
                     >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            {isMobileMenuOpen ? (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            ) : (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            )}
-                        </svg>
-                    </button>
-                </div>
-
-                {/* Mobile Menu */}
-                <div
-                    className={`md:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 mt-6' : 'max-h-0'
-                        }`}
-                >
-                    <div className="glass rounded-2xl p-6 space-y-4">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="block text-deep-cocoa font-medium hover:text-accent-amber transition-colors"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                {link.name}
-                            </a>
-                        ))}
-                        <Link to="/katalog" className="btn-primary w-full text-center text-sm mt-4 block py-3">
-                            Lihat Katalog
-                        </Link>
+                        <div className="glass rounded-2xl p-6 space-y-4">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    to={link.href}
+                                    className="block text-deep-cocoa font-medium hover:text-accent-amber transition-colors"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                            <Link to="/katalog" className="btn-primary w-full text-center text-sm mt-4 block py-3">
+                                Lihat Katalog
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+
+            {/* Cart Drawer Overlay */}
+            <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+        </>
     );
 };
 

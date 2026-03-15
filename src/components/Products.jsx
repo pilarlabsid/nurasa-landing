@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 
 const Products = () => {
-    // Show first 3 products as featured (or mix of categories)
-    const featuredProducts = [products[1], products[3], products[4]]; // Pedas, Caramel, Cheese
+    // Show balanced selection: Original, Extra Pedas, and Caramel
+    const featuredProducts = [products[0], products[2], products[3]]; 
 
     return (
-        <section id="produk" className="relative py-32 bg-warm-cream overflow-hidden">
+        <section id="produk" className="relative py-20 bg-warm-cream overflow-hidden">
             {/* Background Decoration */}
             <div className="absolute inset-0 radial-bg"></div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Section Header */}
-                <div className="text-center mb-20">
+                <div className="text-center mb-16 animate-fade-in">
                     <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-sm mb-4">
                         Koleksi Unggulan
                     </p>
@@ -26,57 +26,62 @@ const Products = () => {
                 </div>
 
                 {/* Products Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                     {featuredProducts.map((product) => (
                         <div
                             key={product.id}
-                            className="group relative bg-ivory rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full"
+                            className="group bg-ivory rounded-[2rem] overflow-hidden border border-deep-cocoa/5 hover:shadow-[0_30px_60px_rgba(61,35,20,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
                         >
                             {/* Product Image */}
-                            <div className="relative h-72 overflow-hidden shrink-0">
+                            <div className="relative h-64 overflow-hidden shrink-0">
                                 <img
                                     src={product.image}
                                     alt={product.name}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                 />
-
-                                {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-deep-cocoa/40 via-transparent to-transparent"></div>
-
+                                <div className="absolute inset-0 bg-gradient-to-t from-deep-cocoa/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                                
                                 {/* Badge */}
-                                <span className={`absolute top-4 right-4 text-ivory text-xs font-medium px-4 py-1.5 rounded-full ${product.badge === 'Hot!' || product.badge === 'New Arrival' ? 'bg-accent-red' : 'bg-accent-amber'
+                                {product.badge && (
+                                    <span className={`absolute top-4 right-4 text-ivory text-[10px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full shadow-lg ${
+                                        product.badge === 'Hot!' || product.badge === 'New Arrival' ? 'bg-accent-red' : 'bg-accent-amber'
                                     }`}>
-                                    {product.badge}
+                                        {product.badge}
+                                    </span>
+                                )}
+                                
+                                <span className="absolute top-4 left-4 px-3 py-1 bg-ivory/90 backdrop-blur-md rounded-full text-[9px] font-bold tracking-widest uppercase text-deep-cocoa shadow-sm">
+                                    {product.category}
                                 </span>
                             </div>
 
                             {/* Content */}
                             <div className="p-8 flex flex-col flex-grow">
-                                {/* Category */}
-                                <span className="text-[10px] font-bold tracking-widest uppercase text-accent-amber mb-2 block">
-                                    {product.category}
-                                </span>
-
-                                <h3 className="font-serif text-2xl font-bold text-deep-cocoa mb-2 group-hover:text-accent-amber transition-colors duration-300">
-                                    {product.name}
-                                </h3>
-                                <p className="text-cocoa-light text-sm italic mb-4">
-                                    {product.tagline}
-                                </p>
+                                <div className="mb-4">
+                                    <h3 className="font-serif text-2xl font-bold text-deep-cocoa mb-1 leading-tight group-hover:text-accent-amber transition-colors">
+                                        {product.name}
+                                    </h3>
+                                    <p className="text-accent-amber text-[10px] font-bold tracking-[0.15em] uppercase opacity-80">
+                                        {product.tagline}
+                                    </p>
+                                </div>
                                 
-                                <p className="text-cocoa-light text-sm leading-relaxed mb-6 line-clamp-2">
+                                <p className="text-cocoa-light text-sm leading-relaxed mb-8 opacity-80 line-clamp-2 italic">
                                     {product.description}
                                 </p>
 
-                                {/* CTA */}
+                                {/* Price & Action */}
                                 <div className="flex items-center justify-between gap-4 mt-auto pt-6 border-t border-deep-cocoa/5">
-                                    <p className="font-bold text-deep-cocoa">{product.price}</p>
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] text-cocoa-light/40 font-bold uppercase tracking-widest mb-0.5">Mulai dari</span>
+                                        <p className="font-bold text-xl text-deep-cocoa">{product.variants ? product.variants[0].price : product.price}</p>
+                                    </div>
                                     <Link
                                         to="/katalog"
-                                        className="text-accent-amber text-sm font-bold flex items-center gap-2 group/link"
+                                        className="inline-flex items-center gap-2 bg-deep-cocoa text-ivory text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl hover:bg-accent-amber transition-all duration-300 group/btn shadow-md hover:shadow-lg"
                                     >
                                         Detail
-                                        <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
                                     </Link>

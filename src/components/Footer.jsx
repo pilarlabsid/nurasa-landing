@@ -1,5 +1,5 @@
-import logoN from '../assets/logo/N.png';
-import logoText from '../assets/logo/NurasaText.png';
+import { Link } from 'react-router-dom';
+import logoText from '../assets/logo/NurasaText.webp';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -35,10 +35,10 @@ const Footer = () => {
     ];
 
     const quickLinks = [
-        { name: 'Beranda', href: '#beranda' },
-        { name: 'Filosofi', href: '#filosofi' },
-        { name: 'Produk', href: '#produk' },
-        { name: 'Cerita', href: '#cerita' },
+        { name: 'Beranda', href: '/' },
+        { name: 'Katalog', href: '/katalog' },
+        { name: 'Kontak', href: '/kontak' },
+        { name: 'Filosofi', href: '/#filosofi' },
     ];
 
     return (
@@ -55,7 +55,7 @@ const Footer = () => {
                     {/* Brand Column */}
                     <div className="lg:col-span-2">
                         {/* Logo */}
-                        <div className="flex items-start mb-6">
+                        <Link to="/" className="flex items-start mb-6">
                             <div className="flex flex-col justify-start">
                                 <img
                                     src={logoText}
@@ -64,7 +64,7 @@ const Footer = () => {
                                 />
                                 <p className="text-sm text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
                             </div>
-                        </div>
+                        </Link>
 
                         <p className="text-cocoa-light leading-relaxed mb-6 max-w-md">
                             Jajanan kering premium Nusantara yang menghadirkan cita rasa pedas berkelas.
@@ -94,13 +94,13 @@ const Footer = () => {
                         <ul className="space-y-3">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
-                                    <a
-                                        href={link.href}
+                                    <Link
+                                        to={link.href}
                                         className="text-cocoa-light hover:text-accent-amber transition-colors duration-300 flex items-center gap-2"
                                     >
                                         <span className="w-1.5 h-1.5 rounded-full bg-accent-amber/50"></span>
                                         {link.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

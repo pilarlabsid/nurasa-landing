@@ -1,9 +1,44 @@
-import originalImg from '../assets/products/Original.jpg';
-import pedasImg from '../assets/products/Pedas.jpg';
-import extraPedasImg from '../assets/products/Extra Pedas.jpg';
-import popcornCaramelImg from '../assets/products/Popcorn_Caramel.png';
-import popcornCheeseImg from '../assets/products/Popcorn_Cheese.png';
-import popcornSpicyImg from '../assets/products/Popcorn_Spicy.png';
+import originalImg from '../assets/products/Original.webp';
+import pedasImg from '../assets/products/Pedas.webp';
+import extraPedasImg from '../assets/products/Extra Pedas.webp';
+import popcornCaramelImg from '../assets/products/Popcorn_Caramel.webp';
+import popcornCheeseImg from '../assets/products/Popcorn_Cheese.webp';
+import popcornSpicyImg from '../assets/products/Popcorn_Spicy.webp';
+
+const basrengVariants = [
+    { 
+        id: 'pouch-kecil', 
+        size: '100gr', 
+        packaging: 'Standing Pouch', 
+        label: 'Pouch Kecil',
+        price: 'Rp 17.000', 
+        originalPrice: 'Rp 20.000' 
+    },
+    { 
+        id: 'pouch-besar', 
+        size: '250gr', 
+        packaging: 'Standing Pouch Besar', 
+        label: 'Pouch Besar',
+        price: 'Rp 43.000', 
+        originalPrice: 'Rp 50.000' 
+    },
+    { 
+        id: 'toples-small', 
+        size: '100gr', 
+        packaging: 'Toples 500ml', 
+        label: 'Toples Small',
+        price: 'Rp 22.000', 
+        originalPrice: 'Rp 25.000' 
+    },
+    { 
+        id: 'toples-large', 
+        size: '130gr', 
+        packaging: 'Toples 600ml', 
+        label: 'Toples Large',
+        price: 'Rp 30.000', 
+        originalPrice: 'Rp 35.000' 
+    }
+];
 
 export const products = [
     {
@@ -15,8 +50,10 @@ export const products = [
         features: ['Bumbu Daun Jeruk', 'Renyah Sempurna', 'Premium Quality'],
         badge: 'Best Seller',
         level: 0,
-        price: 'Rp 15.000',
+        price: 'Rp 17.000',
+        originalPrice: 'Rp 20.000',
         image: originalImg,
+        variants: basrengVariants
     },
     {
         id: 'basreng-pedas',
@@ -27,8 +64,10 @@ export const products = [
         features: ['Cabai Pilihan', 'Pedas Seimbang', 'Renyah Krispi'],
         badge: 'Favorite',
         level: 1,
-        price: 'Rp 15.000',
+        price: 'Rp 17.000',
+        originalPrice: 'Rp 20.000',
         image: pedasImg,
+        variants: basrengVariants
     },
     {
         id: 'basreng-extra-pedas',
@@ -39,8 +78,10 @@ export const products = [
         features: ['Extra Cabai', 'Pedas Nampol', 'Sensasi Maksimal'],
         badge: 'Hot!',
         level: 2,
-        price: 'Rp 15.000',
+        price: 'Rp 17.000',
+        originalPrice: 'Rp 20.000',
         image: extraPedasImg,
+        variants: basrengVariants
     },
     {
         id: 'popcorn-caramel',
@@ -49,10 +90,14 @@ export const products = [
         tagline: 'Manis Keemasan yang Mewah',
         description: 'Popcorn jagung mekar sempurna disalut dengan karamel mentega cair yang kaya rasa. Manis, gurih, dan sangat lumer.',
         features: ['Premium Butter', 'Full Coat Caramel', 'Non-GMO Corn'],
-        badge: 'New Arrival',
+        badge: 'Top Seller',
         level: 0,
-        price: 'Rp 25.000',
+        price: 'Rp 29.000',
+        originalPrice: 'Rp 32.000',
         image: popcornCaramelImg,
+        variants: [
+            { id: 'toples-1000', size: '1000ml', label: 'Toples 1000ml', packaging: 'Toples Big Size', price: 'Rp 29.000', originalPrice: 'Rp 32.000' }
+        ]
     },
     {
         id: 'popcorn-cheese',
@@ -63,8 +108,13 @@ export const products = [
         features: ['Real Cheddar', 'Double Seasoning', 'Extra Crunchy'],
         badge: 'Chef Choice',
         level: 0,
-        price: 'Rp 25.000',
+        price: 'Rp 29.000',
+        originalPrice: 'Rp 32.000',
         image: popcornCheeseImg,
+        isOutOfStock: true,
+        variants: [
+            { id: 'toples-1000', size: '1000ml', label: 'Toples 1000ml', packaging: 'Toples Big Size', price: 'Rp 29.000', originalPrice: 'Rp 32.000' }
+        ]
     },
     {
         id: 'popcorn-spicy-sweet',
@@ -75,8 +125,13 @@ export const products = [
         features: ['Signature Spicy', 'Sweet Balance', 'Artisanal Batch'],
         badge: 'Unique',
         level: 1,
-        price: 'Rp 27.000',
+        price: 'Rp 29.000',
+        originalPrice: 'Rp 32.000',
         image: popcornSpicyImg,
+        isOutOfStock: true,
+        variants: [
+            { id: 'toples-1000', size: '1000ml', label: 'Toples 1000ml', packaging: 'Toples Big Size', price: 'Rp 29.000', originalPrice: 'Rp 32.000' }
+        ]
     },
 ];
 

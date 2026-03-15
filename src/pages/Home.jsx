@@ -1,15 +1,17 @@
 import Hero from '../components/Hero'
 import About from '../components/About'
+import Features from '../components/Features'
 import Products from '../components/Products'
-import Story from '../components/Story'
+import Testimonials from '../components/Testimonials'
 
 const Home = () => {
   return (
     <>
       <Hero />
       <About />
+      <Features />
       <Products />
-      <Story />
+      <Testimonials />
     </>
   )
 }

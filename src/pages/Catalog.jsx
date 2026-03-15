@@ -1,5 +1,150 @@
 import { useState, useEffect } from 'react';
+import { useCart } from '../context/CartContext';
 import { products, categories } from '../data/products';
+
+const ProductCard = ({ product }) => {
+    const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
+    const { addToCart } = useCart();
+    const [added, setAdded] = useState(false);
+
+    return (
+        <div
+            className={`group bg-ivory rounded-[2rem] overflow-hidden border border-deep-cocoa/5 transition-all duration-500 flex flex-col h-full ${
+                product.isOutOfStock ? 'opacity-75 grayscale-[0.5]' : 'hover:shadow-[0_30px_60px_rgba(61,35,20,0.1)] hover:-translate-y-1'
+            }`}
+        >
+            {/* Image Container - Reduced Height */}
+            <div className="relative h-60 overflow-hidden shrink-0">
+                <img
+                    src={product.image}
+                    alt={product.name}
+                    className={`w-full h-full object-cover transition-transform duration-700 ${!product.isOutOfStock && 'group-hover:scale-105'}`}
+                />
+                
+                {/* Category Badge */}
+                <span className="absolute top-4 left-4 px-3 py-1 bg-ivory/95 backdrop-blur-md rounded-full text-[9px] font-bold tracking-widest uppercase text-deep-cocoa shadow-sm">
+                    {product.category}
+                </span>
+
+                {/* Status/Sale Badge */}
+                <div className="absolute top-4 right-4 flex flex-col gap-1.5 items-end">
+                    {product.isOutOfStock ? (
+                        <span className="px-3 py-1 bg-deep-cocoa/80 backdrop-blur-md text-ivory text-[9px] font-bold tracking-widest uppercase rounded-full shadow-lg">
+                            Stok Habis
+                        </span>
+                    ) : (
+                        <>
+                            {selectedVariant.originalPrice && (
+                                <span className="px-3 py-1 bg-accent-red text-ivory text-[9px] font-bold tracking-widest uppercase rounded-full shadow-lg">
+                                    Promo
+                                </span>
+                            )}
+                            {product.badge && !selectedVariant.originalPrice && (
+                                <span className={`px-3 py-1 rounded-full text-ivory text-[9px] font-bold tracking-widest uppercase shadow-lg ${
+                                    product.badge === 'Hot!' || product.badge === 'New Arrival' ? 'bg-accent-red' : 'bg-accent-amber'
+                                }`}>
+                                    {product.badge}
+                                </span>
+                            )}
+                        </>
+                    )}
+                </div>
+            </div>
+
+            {/* Content - Tighter Padding */}
+            <div className="p-6 flex flex-col flex-grow">
+                <div className="mb-4">
+                    <h3 className="font-serif text-xl font-bold text-deep-cocoa mb-0.5 leading-tight">
+                        {product.name}
+                    </h3>
+                    <p className="text-accent-amber text-[10px] font-bold tracking-[0.1em] uppercase opacity-80">
+                        {product.tagline}
+                    </p>
+                </div>
+
+                {/* Price Display - More Compact */}
+                <div className="bg-warm-cream/40 rounded-xl p-3 mb-5 border border-deep-cocoa/5">
+                    <div className="flex items-center justify-between">
+                        <div className="flex flex-col">
+                            <span className="text-[9px] text-cocoa-light/50 font-bold uppercase tracking-widest mb-0.5">Harga</span>
+                            <div className="flex items-center gap-2">
+                                <span className="text-xl font-bold text-deep-cocoa">{selectedVariant.price}</span>
+                                {selectedVariant.originalPrice && (
+                                    <span className="text-xs text-cocoa-light/40 line-through font-medium">{selectedVariant.originalPrice}</span>
+                                )}
+                            </div>
+                        </div>
+                        <div className="text-right">
+                            <span className="text-[9px] text-cocoa-light/50 font-bold uppercase tracking-widest mb-0.5 block">Netto</span>
+                            <span className="text-xs font-bold text-accent-amber">{selectedVariant.size}</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Variant Selector - Tighter Grid */}
+                <div className="mb-6">
+                    <div className="flex items-center justify-between mb-3">
+                        <p className="text-[10px] font-bold text-deep-cocoa/40 uppercase tracking-widest">Pilih Varian</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                        {product.variants.map(v => (
+                            <button 
+                                key={v.id}
+                                onClick={() => setSelectedVariant(v)}
+                                className={`relative py-2 px-2 rounded-xl border-2 transition-all duration-300 ${
+                                    selectedVariant.id === v.id 
+                                    ? 'bg-ivory border-accent-amber shadow-sm' 
+                                    : 'bg-transparent border-deep-cocoa/5 hover:border-deep-cocoa/10 text-cocoa-light'
+                                }`}
+                            >
+                                <span className={`block text-[10px] font-bold mb-0.5 ${selectedVariant.id === v.id ? 'text-deep-cocoa' : ''}`}>
+                                    {v.label || v.size}
+                                </span>
+                                <span className={`block text-[8px] uppercase tracking-tighter opacity-50 ${selectedVariant.id === v.id ? 'text-accent-amber opacity-100' : ''}`}>
+                                    {v.packaging.split(' ')[0]}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Action - Simplified */}
+                <div className="pt-4 border-t border-deep-cocoa/5 mt-auto">
+                    <button
+                        onClick={() => {
+                            if (product.isOutOfStock) return;
+                            addToCart(product, selectedVariant);
+                            setAdded(true);
+                            setTimeout(() => setAdded(false), 2000);
+                        }}
+                        disabled={product.isOutOfStock}
+                        className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 shadow-md group/btn ${
+                            product.isOutOfStock
+                            ? 'bg-deep-cocoa/20 text-deep-cocoa/40 cursor-not-allowed'
+                            : added 
+                                ? 'bg-green-600 text-ivory' 
+                                : 'bg-deep-cocoa text-ivory hover:bg-accent-amber'
+                        }`}
+                    >
+                        <span className="text-xs font-bold uppercase tracking-wider">
+                            {product.isOutOfStock ? 'Stok Habis' : added ? 'Berhasil Ditambahkan!' : 'Tambah ke Keranjang'}
+                        </span>
+                        {!added && !product.isOutOfStock && (
+                            <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            </svg>
+                        )}
+                        {added && (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                        )}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const Catalog = () => {
     const [selectedCategory, setSelectedCategory] = useState('Semua');
@@ -71,67 +216,7 @@ const Catalog = () => {
                 {filteredProducts.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                         {filteredProducts.map((product) => (
-                            <div
-                                key={product.id}
-                                className="group bg-ivory rounded-[2.5rem] overflow-hidden border border-deep-cocoa/5 hover:shadow-[0_20px_50px_rgba(61,35,20,0.1)] transition-all duration-700 hover:-translate-y-2 flex flex-col h-full"
-                            >
-                                {/* Image Container */}
-                                <div className="relative h-80 overflow-hidden shrink-0">
-                                    <img
-                                        src={product.image}
-                                        alt={product.name}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-deep-cocoa/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    
-                                    {/* Price Tag */}
-                                    <div className="absolute bottom-6 left-6 translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
-                                        <p className="text-white font-serif text-2xl font-bold">{product.price}</p>
-                                    </div>
-
-                                    {/* Category Badge */}
-                                    <span className="absolute top-6 left-6 px-4 py-1.5 bg-ivory/90 backdrop-blur-md rounded-full text-[10px] font-bold tracking-widest uppercase text-deep-cocoa">
-                                        {product.category}
-                                    </span>
-
-                                    {/* Status Badge */}
-                                    {product.badge && (
-                                        <span className={`absolute top-6 right-6 px-4 py-1.5 rounded-full text-ivory text-[10px] font-bold tracking-widest uppercase ${
-                                            product.badge === 'Hot!' || product.badge === 'New Arrival' ? 'bg-accent-red' : 'bg-accent-amber'
-                                        }`}>
-                                            {product.badge}
-                                        </span>
-                                    )}
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-8 lg:p-10 flex flex-col flex-grow">
-                                    <h3 className="font-serif text-2xl font-bold text-deep-cocoa mb-2 group-hover:text-accent-amber transition-colors">
-                                        {product.name}
-                                    </h3>
-                                    <p className="text-accent-amber text-xs font-medium tracking-widest uppercase mb-4">
-                                        {product.tagline}
-                                    </p>
-                                    <p className="text-cocoa-light text-sm leading-relaxed mb-8 opacity-80 line-clamp-3">
-                                        {product.description}
-                                    </p>
-
-                                    {/* Action */}
-                                    <div className="flex items-center justify-between pt-6 border-t border-deep-cocoa/5 mt-auto">
-                                        <a
-                                            href={`https://wa.me/6285137143942?text=Halo%20Nurasa,%20saya%20tertarik%20dengan%20${encodeURIComponent(product.name)}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-2 text-deep-cocoa font-bold text-sm group/btn"
-                                        >
-                                            Pesan Sekarang
-                                            <svg className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
                 ) : (
