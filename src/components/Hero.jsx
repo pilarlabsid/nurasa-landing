@@ -32,7 +32,7 @@ const Hero = () => {
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-12 lg:py-32">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     {/* Left: Text Content */}
-                    <div className="hero-text-col w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <div className="hero-text-col w-full lg:w-1/2 flex flex-col items-start text-left">
                         {/* Subtitle */}
                         <p className="text-accent-amber font-medium tracking-[0.2em] lg:tracking-[0.3em] uppercase text-[10px] lg:text-sm mb-4 lg:mb-6 animate-fade-in">
                             Jajanan Kering Premium Nusantara
@@ -47,13 +47,13 @@ const Hero = () => {
                         </h1>
 
                         {/* Description */}
-                        <p className="max-w-xl text-base lg:text-lg text-cocoa-light leading-relaxed mb-8 lg:mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                        <p className="max-w-lg text-base lg:text-lg text-cocoa-light leading-relaxed mb-8 lg:mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                             Setiap gigitan adalah awal dari sebuah cerita baru. Nikmati cita rasa pedas
                             yang berkelas dari rempah pilihan petani lokal.
                         </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-start items-start sm:items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
                             <a href="#produk" className="btn-primary px-8 py-3.5 lg:py-4 text-base lg:text-lg w-full sm:w-auto">
                                 <span>Jelajahi Produk</span>
                                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
