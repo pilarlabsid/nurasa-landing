@@ -78,14 +78,14 @@ const Hero = () => {
                 </div>
 
                 {/* ─── Mobile Layout: stacked ─── */}
-                <div className="flex lg:hidden flex-col items-center text-center gap-6">
+                <div className="flex lg:hidden flex-col items-center text-center gap-8">
                     {/* Subtitle */}
                     <p className="text-accent-amber font-medium tracking-[0.2em] uppercase text-[10px] animate-fade-in">
                         Jajanan Kering Premium Nusantara
                     </p>
 
                     {/* Headline */}
-                    <h1 className="font-serif text-4xl md:text-5xl font-bold text-deep-cocoa animate-fade-in-up leading-[1.1] tracking-tight">
+                    <h1 className="font-serif text-4xl md:text-5xl font-bold text-deep-cocoa animate-fade-in-up leading-[1.1] tracking-tight -mt-4">
                         Ada <span className="italic text-accent-amber">Cerita</span><br />
                         di Setiap <span className="italic">Rasa</span>
                     </h1>
@@ -99,15 +99,15 @@ const Hero = () => {
                         yang berkelas dari rempah pilihan petani lokal.
                     </p>
 
-                    {/* CTA side by side */}
-                    <div className="flex flex-row gap-3 justify-center items-center w-full animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                        <a href="#produk" className="btn-primary px-5 py-3 text-sm flex-1 max-w-[160px]">
+                    {/* CTA side by side — single line */}
+                    <div className="flex flex-row gap-3 justify-center items-center w-full animate-fade-in-up pb-4" style={{ animationDelay: '0.4s' }}>
+                        <a href="#produk" className="btn-primary px-4 py-3 text-sm whitespace-nowrap flex items-center gap-2">
                             <span>Jelajahi Produk</span>
-                            <svg className="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </a>
-                        <a href="/tentang" className="btn-secondary px-5 py-3 text-sm flex-1 max-w-[160px]">
+                        <a href="/tentang" className="btn-secondary px-4 py-3 text-sm whitespace-nowrap">
                             Dengar Cerita
                         </a>
                     </div>
