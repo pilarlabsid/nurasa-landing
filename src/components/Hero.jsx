@@ -74,6 +74,8 @@ const Hero = () => {
                             <img
                                 src={NurasaProduct}
                                 alt="Nurasa Product"
+                                fetchPriority="high"
+                                loading="eager"
                                 className="relative w-full h-full object-cover rounded-[2.5rem] lg:rounded-[4rem] shadow-2xl border-4 border-ivory"
                             />
                         </div>
