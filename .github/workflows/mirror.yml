@@ -1,0 +1,21 @@
+name: Mirror to Nurasa Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Push to deploy repo
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git remote add deploy https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/pilarlabsid/nurasa.git
+          git push deploy main --force
