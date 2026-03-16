@@ -19,7 +19,17 @@ jobs:
         env:
           MY_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          # Cek jika token kosong (akan terlihat di log GitHub Actions)
+          if [ -z "$MY_TOKEN" ]; then
+            echo "ERROR: GH_TOKEN is empty. Please check your Repository Secrets."
+            exit 1
+          fi
+
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git remote add deploy https://x-access-token:${MY_TOKEN}@github.com/pilarlabsid/nurasa.git || git remote set-url deploy https://x-access-token:${MY_TOKEN}@github.com/pilarlabsid/nurasa.git
+          
+          # Gunakan format URL yang lebih ketat
+          git remote add deploy "https://pilarlabsid:${MY_TOKEN}@github.com/pilarlabsid/nurasa.git" || \
+          git remote set-url deploy "https://pilarlabsid:${MY_TOKEN}@github.com/pilarlabsid/nurasa.git"
+          
           git push deploy main --force
