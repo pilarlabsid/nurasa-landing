@@ -9,40 +9,39 @@ const About = () => {
             <div className="decorative-circle w-96 h-96 -bottom-48 -left-48 border-accent-amber/5"></div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
                     {/* Left: Branding Visual with Image */}
                     <div className="w-full lg:w-1/2 relative group">
-                        <div className="absolute inset-0 bg-gradient-to-br from-deep-cocoa to-accent-amber rounded-[3rem] rotate-3 group-hover:rotate-1 transition-transform duration-700"></div>
-                        <div className="relative aspect-[4/5] bg-ivory rounded-[3rem] overflow-hidden shadow-2xl border border-deep-cocoa/5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-700">
+                        <div className="absolute inset-0 bg-gradient-to-br from-deep-cocoa to-accent-amber rounded-[2.5rem] lg:rounded-[3rem] rotate-3 group-hover:rotate-1 transition-transform duration-700"></div>
+                        <div className="relative aspect-[4/5] bg-ivory rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-2xl border border-deep-cocoa/5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-700">
                              <img 
                                 src={basrengLifestyle} 
                                 alt="Nurasa Lifestyle" 
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                              />
                              <div className="absolute inset-0 bg-gradient-to-t from-deep-cocoa/60 via-transparent to-transparent opacity-60"></div>
-                             <div className="absolute bottom-8 left-8 right-8 text-ivory">
-                                <p className="font-serif text-2xl leading-relaxed italic mb-4">
-                                    "Cahaya dalam setiap rasa, kejujuran dalam setiap bahan."
+                             <div className="absolute bottom-6 lg:bottom-8 left-6 lg:left-8 right-6 lg:right-8 text-ivory">
+                                <p className="font-serif text-xl lg:text-2xl leading-relaxed italic mb-4">
+                                     "Cahaya dalam setiap rasa, kejujuran dalam setiap bahan."
                                 </p>
                                 <div className="w-12 h-0.5 bg-accent-amber rounded-full mb-2"></div>
-                                <p className="text-[10px] font-bold tracking-widest uppercase opacity-80">Narasi Nurasa</p>
+                                <p className="text-[9px] lg:text-[10px] font-bold tracking-widest uppercase opacity-80">Narasi Nurasa</p>
                              </div>
                         </div>
                     </div>
 
                     {/* Right: Text Content */}
                     <div className="w-full lg:w-1/2">
-                        <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-sm mb-6">
+                        <p className="text-accent-amber font-medium tracking-[0.2em] lg:tracking-[0.3em] uppercase text-[10px] lg:text-sm mb-4 lg:mb-6">
                             Filosofi Kami
                         </p>
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold text-deep-cocoa mb-8 leading-tight">
+                        <h2 className="font-serif text-3xl lg:text-5xl font-bold text-deep-cocoa mb-6 lg:mb-8 leading-tight">
                             Lebih dari Sekadar <br />
                             <span className="italic text-accent-amber">Camilan Biasa.</span>
                         </h2>
-                        <p className="text-cocoa-light text-lg leading-relaxed mb-10 opacity-80">
+                        <p className="text-cocoa-light text-base lg:text-lg leading-relaxed mb-8 lg:mb-10 opacity-80">
                             Terinspirasi dari kekayaan rempah Nusantara, Nurasa hadir membawa 
-                            kejujuran rasa melalui proses yang telaten. Kami percaya bahwa 
-                            setiap gigitan punya cerita yang layak untuk dibagikan.
+                            kejujuran rasa melalui proses yang telaten.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-6">

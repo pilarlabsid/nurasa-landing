@@ -54,12 +54,12 @@ const ProductCard = ({ product }) => {
             </div>
 
             {/* Content - Tighter Padding */}
-            <div className="p-6 flex flex-col flex-grow">
+            <div className="p-5 lg:p-6 flex flex-col flex-grow">
                 <div className="mb-4">
-                    <h3 className="font-serif text-xl font-bold text-deep-cocoa mb-0.5 leading-tight">
+                    <h3 className="font-serif text-lg lg:text-xl font-bold text-deep-cocoa mb-0.5 leading-tight">
                         {product.name}
                     </h3>
-                    <p className="text-accent-amber text-[10px] font-bold tracking-[0.1em] uppercase opacity-80">
+                    <p className="text-accent-amber text-[9px] lg:text-[10px] font-bold tracking-[0.1em] uppercase opacity-80">
                         {product.tagline}
                     </p>
                 </div>
@@ -188,13 +188,13 @@ const Catalog = () => {
                 url="/katalog"
             />
             <StructuredData data={catalogStructuredData} />
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-5 lg:px-8">
                 {/* Header */}
-                <div className="mb-12 text-center">
-                    <h1 className="font-serif text-5xl md:text-6xl font-bold text-deep-cocoa mb-4">
+                <div className="mb-10 lg:mb-12 text-center">
+                    <h1 className="font-serif text-4xl lg:text-6xl font-bold text-deep-cocoa mb-4">
                         Katalog <span className="text-accent-amber italic">Nurasa</span>
                     </h1>
-                    <p className="text-cocoa-light max-w-2xl mx-auto">
+                    <p className="text-cocoa-light text-sm lg:text-base max-w-2xl mx-auto">
                         Jelajahi seluruh koleksi jajanan premium kami. Dari renyahnya Basreng hingga lezatnya Popcorn Gourmet.
                     </p>
                 </div>
@@ -202,12 +202,12 @@ const Catalog = () => {
                 {/* Filters & Search */}
                 <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between">
                     {/* Categories */}
-                    <div className="flex gap-2 p-1 bg-ivory/50 rounded-2xl border border-deep-cocoa/5 overflow-x-auto w-full md:w-auto">
+                    <div className="flex gap-2 p-1 bg-ivory/50 rounded-2xl border border-deep-cocoa/5 overflow-x-auto w-full md:w-auto custom-scrollbar">
                         {categories.map(cat => (
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
-                                className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                                className={`px-4 lg:px-6 py-2 lg:py-2.5 rounded-xl text-xs lg:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
                                     selectedCategory === cat
                                         ? 'bg-deep-cocoa text-ivory shadow-lg transform scale-105'
                                         : 'text-cocoa-light hover:bg-warm-cream'

@@ -31,11 +31,11 @@ const Navbar = () => {
         <>
             <nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                    ? 'bg-warm-cream/95 backdrop-blur-md shadow-lg py-4'
-                    : 'bg-transparent py-6'
+                    ? 'bg-warm-cream/95 backdrop-blur-md shadow-lg py-3 lg:py-4'
+                    : 'bg-transparent py-5 lg:py-6'
                     }`}
             >
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-5 lg:px-8">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <Link to="/" className="flex items-start">
@@ -43,9 +43,9 @@ const Navbar = () => {
                                 <img
                                     src={logoText}
                                     alt="Nurasa"
-                                    className="h-8 object-contain object-left mb-0.5 hover:scale-105 transition-transform duration-300"
+                                    className="h-7 lg:h-8 object-contain object-left mb-0.5 hover:scale-105 transition-transform duration-300"
                                 />
-                                <p className="text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
+                                <p className="text-[9px] lg:text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
                             </div>
                         </Link>
 
@@ -133,23 +133,31 @@ const Navbar = () => {
 
                     {/* Mobile Menu */}
                     <div
-                        className={`md:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 mt-6' : 'max-h-0'
+                        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'max-h-96 mt-4' : 'max-h-0'
                             }`}
                     >
-                        <div className="glass rounded-2xl p-6 space-y-4">
+                        <div className="bg-ivory/95 backdrop-blur-xl rounded-[1.5rem] p-5 space-y-4 shadow-xl border border-deep-cocoa/5">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     to={link.href}
-                                    className="block text-deep-cocoa font-medium hover:text-accent-amber transition-colors"
+                                    className={`block text-lg font-serif font-bold transition-all duration-300 ${
+                                        location.pathname === link.href ? 'text-accent-amber' : 'text-deep-cocoa hover:text-accent-amber'
+                                    }`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
-                            <Link to="/katalog" className="btn-primary w-full text-center text-sm mt-4 block py-3">
-                                Lihat Katalog
-                            </Link>
+                            <div className="pt-2">
+                                <Link 
+                                    to="/katalog" 
+                                    className="btn-primary w-full text-center text-sm font-bold uppercase tracking-wider block py-3.5 rounded-xl shadow-lg"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    Lihat Katalog
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

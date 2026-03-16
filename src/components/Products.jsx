@@ -12,28 +12,27 @@ const Products = () => {
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Section Header */}
-                <div className="text-center mb-16 animate-fade-in">
-                    <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-sm mb-4">
+                <div className="text-center mb-12 lg:mb-16 animate-fade-in">
+                    <p className="text-accent-amber font-medium tracking-[0.2em] lg:tracking-[0.3em] uppercase text-[10px] lg:text-sm mb-4">
                         Koleksi Unggulan
                     </p>
-                    <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-deep-cocoa mb-6">
+                    <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-deep-cocoa mb-6">
                         Produk <span className="italic text-accent-amber">Pilihan</span> Kami
                     </h2>
-                    <p className="max-w-2xl mx-auto text-cocoa-light text-lg">
-                        Dari Basreng yang renyah hingga Popcorn Gourmet yang lumer. 
-                        Temukan camilan yang paling pas untuk harimu.
+                    <p className="max-w-2xl mx-auto text-cocoa-light text-base lg:text-lg">
+                        Dari Basreng yang renyah hingga Popcorn Gourmet yang lumer.
                     </p>
                 </div>
 
                 {/* Products Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
                     {featuredProducts.map((product) => (
                         <div
                             key={product.id}
                             className="group bg-ivory rounded-[2rem] overflow-hidden border border-deep-cocoa/5 hover:shadow-[0_30px_60px_rgba(61,35,20,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
                         >
                             {/* Product Image */}
-                            <div className="relative h-64 overflow-hidden shrink-0">
+                            <div className="relative h-56 lg:h-64 overflow-hidden shrink-0">
                                 <img
                                     src={product.image}
                                     alt={product.name}
@@ -43,7 +42,7 @@ const Products = () => {
                                 
                                 {/* Badge */}
                                 {product.badge && (
-                                    <span className={`absolute top-4 right-4 text-ivory text-[10px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full shadow-lg ${
+                                    <span className={`absolute top-4 right-4 text-ivory text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full shadow-lg ${
                                         product.badge === 'Hot!' || product.badge === 'New Arrival' ? 'bg-accent-red' : 'bg-accent-amber'
                                     }`}>
                                         {product.badge}
@@ -56,32 +55,32 @@ const Products = () => {
                             </div>
 
                             {/* Content */}
-                            <div className="p-8 flex flex-col flex-grow">
+                            <div className="p-6 lg:p-8 flex flex-col flex-grow">
                                 <div className="mb-4">
-                                    <h3 className="font-serif text-2xl font-bold text-deep-cocoa mb-1 leading-tight group-hover:text-accent-amber transition-colors">
+                                    <h3 className="font-serif text-xl lg:text-2xl font-bold text-deep-cocoa mb-1 leading-tight group-hover:text-accent-amber transition-colors">
                                         {product.name}
                                     </h3>
-                                    <p className="text-accent-amber text-[10px] font-bold tracking-[0.15em] uppercase opacity-80">
+                                    <p className="text-accent-amber text-[9px] font-bold tracking-[0.1em] lg:tracking-[0.15em] uppercase opacity-80">
                                         {product.tagline}
                                     </p>
                                 </div>
                                 
-                                <p className="text-cocoa-light text-sm leading-relaxed mb-8 opacity-80 line-clamp-2 italic">
+                                <p className="text-cocoa-light text-[13px] lg:text-sm leading-relaxed mb-6 lg:mb-8 opacity-80 line-clamp-2 italic">
                                     {product.description}
                                 </p>
 
                                 {/* Price & Action */}
                                 <div className="flex items-center justify-between gap-4 mt-auto pt-6 border-t border-deep-cocoa/5">
                                     <div className="flex flex-col">
-                                        <span className="text-[10px] text-cocoa-light/40 font-bold uppercase tracking-widest mb-0.5">Mulai dari</span>
-                                        <p className="font-bold text-xl text-deep-cocoa">{product.variants ? product.variants[0].price : product.price}</p>
+                                        <span className="text-[9px] text-cocoa-light/40 font-bold uppercase tracking-widest mb-0.5">Mulai dari</span>
+                                        <p className="font-bold text-lg lg:text-xl text-deep-cocoa">{product.variants ? product.variants[0].price : product.price}</p>
                                     </div>
                                     <Link
                                         to="/katalog"
-                                        className="inline-flex items-center gap-2 bg-deep-cocoa text-ivory text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl hover:bg-accent-amber transition-all duration-300 group/btn shadow-md hover:shadow-lg"
+                                        className="inline-flex items-center gap-2 bg-deep-cocoa text-ivory text-[10px] font-bold uppercase tracking-wider px-4 lg:px-5 py-2.5 lg:py-3 rounded-xl hover:bg-accent-amber transition-all duration-300 group/btn shadow-md hover:shadow-lg"
                                     >
                                         Detail
-                                        <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-3.5 h-3.5 lg:w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
                                     </Link>
@@ -92,7 +91,7 @@ const Products = () => {
                 </div>
 
                 {/* View All Button */}
-                <div className="mt-16 text-center">
+                <div className="mt-12 lg:mt-16 text-center">
                     <Link 
                         to="/katalog" 
                         className="btn-primary"
@@ -103,19 +102,21 @@ const Products = () => {
 
 
                 {/* Gift Ready Section */}
-                <div className="mt-20 text-center">
+                <div className="mt-16 lg:mt-20 text-center">
                     <a
                         href="https://wa.me/6285137143942?text=Halo%20Nurasa,%20saya%20ingin%20pesan%20Basreng%20untuk%20hadiah"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-4 bg-ivory rounded-full px-8 py-4 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                        className="inline-flex flex-col sm:flex-row items-center gap-4 bg-ivory rounded-[2rem] px-6 lg:px-8 py-5 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer max-w-lg mx-auto"
                     >
-                        <svg className="w-8 h-8 text-accent-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                        </svg>
-                        <div className="text-left">
-                            <p className="font-serif font-bold text-deep-cocoa">Gift-Ready Packaging</p>
-                            <p className="text-sm text-cocoa-light">Klik untuk pesan paket hadiah istimewa</p>
+                        <div className="w-12 h-12 bg-accent-amber/10 rounded-full flex items-center justify-center shrink-0">
+                            <svg className="w-6 h-6 text-accent-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                            </svg>
+                        </div>
+                        <div className="text-center sm:text-left">
+                            <p className="font-serif font-bold text-deep-cocoa text-lg">Gift-Ready Packaging</p>
+                            <p className="text-xs lg:text-sm text-cocoa-light">Klik untuk pesan paket hadiah istimewa</p>
                         </div>
                     </a>
                 </div>
