@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { products, categories } from '../data/products';
+import SEO from '../components/SEO';
+import StructuredData from '../components/StructuredData';
 
 const ProductCard = ({ product }) => {
     const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
@@ -165,8 +167,27 @@ const Catalog = () => {
         setFilteredProducts(result);
     }, [selectedCategory, searchTerm]);
 
+    const catalogStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": products.map((product, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "url": `https://nurasa.store/katalog`,
+            "name": product.name,
+            "image": `https://nurasa.store/assets/products/${product.name.replace(/ /g, '%20')}.webp`, // Estimate image URL
+            "description": product.description
+        }))
+    };
+
     return (
         <div className="pt-32 pb-20 min-h-screen bg-warm-cream">
+            <SEO 
+                title="Katalog Produk" 
+                description="Jelajahi koleksi lengkap camilan premium Nurasa. Basreng berbagai level pedas dan Popcorn Gourmet dengan rasa istimewa."
+                url="/katalog"
+            />
+            <StructuredData data={catalogStructuredData} />
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Header */}
                 <div className="mb-12 text-center">

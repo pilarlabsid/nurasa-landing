@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import basrengLifestyle from '../assets/general/basreng-lifestyle.webp';
+import SEO from '../components/SEO';
 
 const AboutPage = () => {
     const filosofi = [
@@ -60,6 +61,11 @@ const AboutPage = () => {
 
     return (
         <div className="pt-20 bg-ivory overflow-hidden">
+            <SEO 
+                title="Tentang Kami" 
+                description="Pelajari filosofi di balik Nurasa. Kami menghadirkan narasi cita rasa yang merayakan kekayaan rempah Nusantara melalui camilan premium."
+                url="/tentang"
+            />
             {/* Page Hero */}
             <section className="relative py-24 md:py-32 bg-deep-cocoa overflow-hidden">
                 <div className="absolute inset-0">

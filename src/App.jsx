@@ -10,25 +10,29 @@ import ScrollToTop from './components/ScrollToTop'
 
 import { CartProvider } from './context/CartContext'
 
+import { HelmetProvider } from 'react-helmet-async'
+
 function App() {
   return (
-    <CartProvider>
-      <Router>
-        <ScrollToTop />
-        <div className="min-h-screen bg-warm-cream">
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/katalog" element={<Catalog />} />
-              <Route path="/kontak" element={<Contact />} />
-              <Route path="/tentang" element={<AboutPage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </CartProvider>
+    <HelmetProvider>
+      <CartProvider>
+        <Router>
+          <ScrollToTop />
+          <div className="min-h-screen bg-warm-cream">
+            <Navbar />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/katalog" element={<Catalog />} />
+                <Route path="/kontak" element={<Contact />} />
+                <Route path="/tentang" element={<AboutPage />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </CartProvider>
+    </HelmetProvider>
   )
 }
 

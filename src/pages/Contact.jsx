@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { products } from '../data/products';
+import SEO from '../components/SEO';
 
 const Contact = () => {
     const [formState, setFormState] = useState({
@@ -55,6 +56,11 @@ const Contact = () => {
 
     return (
         <div className="pt-32 pb-20 min-h-screen bg-warm-cream overflow-hidden">
+            <SEO 
+                title="Hubungi Kami" 
+                description="Punya pertanyaan atau ingin bekerjasama dengan Nurasa? Hubungi kami melalui WhatsApp, Instagram, atau Email. Kami siap membantu Anda."
+                url="/kontak"
+            />
             {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
                 <div className="rays-decoration"></div>
