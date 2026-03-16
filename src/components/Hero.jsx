@@ -51,7 +51,7 @@ const Hero = () => {
                         <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-sm mb-6 animate-fade-in">
                             Jajanan Kering Premium Nusantara
                         </p>
-                        <h1 className="font-serif text-7xl xl:text-8xl font-bold text-deep-cocoa mb-6 animate-fade-in-up leading-[1.1] tracking-tight">
+                        <h1 className="font-serif text-6xl xl:text-7xl font-bold text-deep-cocoa mb-6 animate-fade-in-up leading-[1.1] tracking-tight">
                             Ada <span className="italic text-accent-amber">Cerita</span><br />
                             di Setiap <span className="italic">Rasa</span>
                         </h1>
