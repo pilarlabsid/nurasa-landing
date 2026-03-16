@@ -9,8 +9,8 @@ const Hero = () => {
             {/* Decorative Background Elements */}
             <div className="absolute inset-0 rays-decoration opacity-50"></div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-32">
-                <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-12 lg:py-32">
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     {/* Left: Text Content */}
                     <div className="w-full lg:w-1/2 text-center lg:text-left">
                         {/* Subtitle */}
@@ -19,7 +19,7 @@ const Hero = () => {
                         </p>
 
                         {/* Main Headline */}
-                        <h1 className="font-serif text-4xl md:text-7xl lg:text-8xl font-bold text-deep-cocoa mb-6 animate-fade-in-up leading-[1.1]">
+                        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-deep-cocoa mb-6 animate-fade-in-up leading-[1.1] tracking-tight">
                             Ada <span className="italic text-accent-amber">Cerita</span>
                             <span className="hidden lg:inline"><br /></span>
                             <span className="lg:hidden"> </span>
@@ -48,20 +48,20 @@ const Hero = () => {
 
                     {/* Right: Hero Image */}
                     <div className="w-full lg:w-1/2 relative animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                        <div className="relative aspect-square md:aspect-[4/3] lg:aspect-square max-w-md mx-auto">
-                            <div className="absolute inset-0 bg-accent-amber rounded-[2rem] lg:rounded-[3rem] rotate-6 opacity-20"></div>
-                            <div className="absolute inset-0 bg-deep-cocoa rounded-[2rem] lg:rounded-[3rem] -rotate-3 opacity-10"></div>
+                        <div className="relative aspect-square md:aspect-[4/3] lg:aspect-square max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
+                            <div className="absolute inset-0 bg-accent-amber rounded-[2rem] lg:rounded-[4rem] rotate-6 opacity-20 scale-105"></div>
+                            <div className="absolute inset-0 bg-deep-cocoa rounded-[2rem] lg:rounded-[4rem] -rotate-3 opacity-10 scale-105"></div>
                             <img
                                 src={NurasaProduct}
                                 alt="Nurasa Product"
-                                className="relative w-full h-full object-cover rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl border-4 border-ivory"
+                                className="relative w-full h-full object-cover rounded-[2.5rem] lg:rounded-[4rem] shadow-2xl border-4 border-ivory"
                             />
                         </div>
                     </div>
                 </div>
 
-                {/* Scroll Indicator */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+                {/* Scroll Indicator - Hidden on Mobile */}
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
                     <a href="#filosofi" className="flex flex-col items-center text-deep-cocoa/50 hover:text-deep-cocoa transition-colors">
                         <span className="text-xs tracking-widest uppercase mb-2">Scroll</span>
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
