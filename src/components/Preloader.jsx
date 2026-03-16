@@ -19,7 +19,7 @@ const Preloader = () => {
         const uiTimer = setTimeout(() => {
             setShowUI(true);
             setIsAnimating(true);
-        }, 400); // 400ms threshold
+        }, 600); // 400ms threshold
 
         const handleLoad = async () => {
             try {
@@ -31,7 +31,7 @@ const Preloader = () => {
                     }),
                     document.fonts.ready
                 ]);
-                
+
                 // Once ready, hide everything
                 setIsVisible(false);
             } catch (error) {
@@ -55,19 +55,17 @@ const Preloader = () => {
     if (!shouldRender) return null;
 
     return (
-        <div 
-            className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-warm-cream transition-opacity duration-1000 ease-in-out ${
-                isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
+        <div
+            className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-warm-cream transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
         >
-            <div className={`relative flex flex-col items-center w-full max-w-[280px] transition-all duration-700 ${
-                showUI ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}>
+            <div className={`relative flex flex-col items-center w-full max-w-[280px] transition-all duration-700 ${showUI ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}>
                 {/* Branding */}
                 <div className="flex flex-col items-center mb-10">
-                    <img 
-                        src={logoText} 
-                        alt="Nurasa Logo" 
+                    <img
+                        src={logoText}
+                        alt="Nurasa Logo"
                         className="h-12 md:h-14 object-contain"
                     />
                     <p className="mt-3 text-[10px] md:text-[11px] text-deep-cocoa/50 font-medium tracking-[0.25em] uppercase font-sans">
@@ -78,7 +76,7 @@ const Preloader = () => {
                 {/* Intelligent Progress Line */}
                 <div className="w-full flex flex-col items-center gap-4">
                     <div className="relative w-full h-[1px] bg-deep-cocoa/10 overflow-hidden">
-                        <div 
+                        <div
                             className="absolute inset-0 bg-accent-amber transition-transform duration-[2000ms] cubic-bezier(0.65, 0, 0.35, 1) origin-left"
                             style={{ transform: isAnimating ? 'scaleX(1)' : 'scaleX(0)' }}
                         ></div>
