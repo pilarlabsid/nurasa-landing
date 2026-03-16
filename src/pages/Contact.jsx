@@ -15,8 +15,18 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Simulate form submission
-        const text = `Halo Nurasa, saya ${formState.name}.\n\nSubjek: ${formState.subject}\nEmail: ${formState.email}\n\nPesan:\n${formState.message}`;
+        const text = `🌐 *Pesan dari Website Nurasa*
+────────────────────
+
+Halo Nurasa, saya ${formState.name}.
+
+Subjek: ${formState.subject}
+Email: ${formState.email}
+
+Pesan:
+${formState.message}`;
         const waUrl = `https://wa.me/6285137143942?text=${encodeURIComponent(text)}`;
+
         window.open(waUrl, '_blank');
         setIsSubmitted(true);
     };

@@ -148,7 +148,7 @@ const Footer = () => {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <a
-                                href="https://wa.me/6285137143942?text=Halo%20Nurasa,%20saya%20ingin%20pesan%20produk"
+                                href={`https://wa.me/6285137143942?text=${encodeURIComponent('🌐 *Pesan dari Website Nurasa*\n────────────────────\n\nHalo Nurasa, saya ingin pesan produk. Mohon infonya ya!')}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"

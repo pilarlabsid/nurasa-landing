@@ -104,7 +104,7 @@ const Products = () => {
                 {/* Gift Ready Section */}
                 <div className="mt-16 lg:mt-20 text-center">
                     <a
-                        href="https://wa.me/6285137143942?text=Halo%20Nurasa,%20saya%20ingin%20pesan%20Basreng%20untuk%20hadiah"
+                        href={`https://wa.me/6285137143942?text=${encodeURIComponent('🌐 *Pesan dari Website Nurasa*\n────────────────────\n\nHalo Nurasa, saya ingin pesan Basreng untuk hadiah. Mohon infonya ya!')}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex flex-col sm:flex-row items-center gap-4 bg-ivory rounded-[2rem] px-6 lg:px-8 py-5 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer max-w-lg mx-auto"
