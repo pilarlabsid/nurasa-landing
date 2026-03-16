@@ -12,6 +12,7 @@ import { CartProvider } from './context/CartContext'
 
 import { HelmetProvider } from 'react-helmet-async'
 import Preloader from './components/Preloader'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Preloader />
         <Router>
           <ScrollToTop />
-<div className="min-h-screen bg-warm-cream">
+          <div className="min-h-screen bg-warm-cream">
             <Navbar />
             <main>
               <Routes>
@@ -32,6 +33,7 @@ function App() {
             </main>
             <Footer />
           </div>
+          <Analytics />
         </Router>
       </CartProvider>
     </HelmetProvider>
