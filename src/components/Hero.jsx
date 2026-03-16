@@ -12,7 +12,7 @@ const Hero = () => {
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-12 lg:py-32">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     {/* Left: Text Content */}
-                    <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <div className="hero-text-col w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
                         {/* Subtitle */}
                         <p className="text-accent-amber font-medium tracking-[0.2em] lg:tracking-[0.3em] uppercase text-[10px] lg:text-sm mb-4 lg:mb-6 animate-fade-in">
                             Jajanan Kering Premium Nusantara

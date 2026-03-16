@@ -33,11 +33,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=block" rel="stylesheet">
 
   <style>
-    /* Critical CSS to prevent white flash and layout shift */
+    /* Critical CSS to prevent white flash and layout shift on initial render */
     body {
-      background-color: #FAF6F1 !important; /* warm-cream */
+      background-color: #FAF6F1 !important;
       margin: 0;
       overflow-x: hidden;
+    }
+
+    /* Lock hero text to left-align on desktop BEFORE Tailwind loads
+       This prevents the center to left shift (CLS issue) */
+    @media (min-width: 1024px) {
+      #beranda .hero-text-col {
+        align-items: flex-start !important;
+        text-align: left !important;
+      }
     }
   </style>
 </head>
