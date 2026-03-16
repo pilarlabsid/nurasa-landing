@@ -9,9 +9,9 @@ const About = () => {
             <div className="decorative-circle w-96 h-96 -bottom-48 -left-48 border-accent-amber/5"></div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
                     {/* Left: Branding Visual with Image */}
-                    <div className="w-full lg:w-1/2 relative group">
+                    <div className="w-full lg:w-[42%] relative group">
                         <div className="absolute inset-0 bg-gradient-to-br from-deep-cocoa to-accent-amber rounded-[2.5rem] lg:rounded-[3rem] rotate-3 group-hover:rotate-1 transition-transform duration-700"></div>
                         <div className="relative aspect-[4/5] bg-ivory rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-2xl border border-deep-cocoa/5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-700">
                              <img 
@@ -31,7 +31,7 @@ const About = () => {
                     </div>
 
                     {/* Right: Text Content */}
-                    <div className="w-full lg:w-1/2">
+                    <div className="w-full lg:w-[52%]">
                         <p className="text-accent-amber font-medium tracking-[0.2em] lg:tracking-[0.3em] uppercase text-[10px] lg:text-sm mb-4 lg:mb-6">
                             Filosofi Kami
                         </p>
