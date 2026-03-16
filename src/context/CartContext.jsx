@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (product, variant) => {
         setCart(prevCart => {
-            const existingItemIndex = prevCart.findIndex(item => 
+            const existingItemIndex = prevCart.findIndex(item =>
                 item.id === product.id && item.variant.id === variant.id
             );
 
@@ -32,18 +32,18 @@ export const CartProvider = ({ children }) => {
                 return newCart;
             }
 
-            return [...prevCart, { 
-                id: product.id, 
-                name: product.name, 
+            return [...prevCart, {
+                id: product.id,
+                name: product.name,
                 image: product.image,
                 variant: variant,
-                quantity: 1 
+                quantity: 1
             }];
         });
     };
 
     const removeFromCart = (productId, variantId) => {
-        setCart(prevCart => prevCart.filter(item => 
+        setCart(prevCart => prevCart.filter(item =>
             !(item.id === productId && item.variant.id === variantId)
         ));
     };
@@ -75,7 +75,7 @@ export const CartProvider = ({ children }) => {
     const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
 
     const formatWhatsAppMessage = () => {
-        let message = `🌐 *Pesanan dari Website Nurasa*\n`;
+        let message = `*Pesanan dari Website Nurasa*\n`;
         message += `────────────────────\n\n`;
         message += `Halo Nurasa! Saya ingin memesan:\n\n`;
         cart.forEach((item, index) => {
@@ -97,15 +97,15 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ 
-            cart, 
-            addToCart, 
-            removeFromCart, 
-            updateQuantity, 
-            clearCart, 
-            cartTotal, 
+        <CartContext.Provider value={{
+            cart,
+            addToCart,
+            removeFromCart,
+            updateQuantity,
+            clearCart,
+            cartTotal,
             cartCount,
-            checkoutToWhatsApp 
+            checkoutToWhatsApp
         }}>
             {children}
         </CartContext.Provider>
