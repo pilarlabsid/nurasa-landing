@@ -76,7 +76,7 @@ export const CartProvider = ({ children }) => {
 
     const formatWhatsAppMessage = () => {
         let message = `*Pesanan dari Website Nurasa*\n`;
-        message += `────────────────────\n\n`;
+        message += `──────────────\n\n`;
         message += `Halo Nurasa! Saya ingin memesan:\n\n`;
         cart.forEach((item, index) => {
             const price = parsePrice(item.variant.price);
