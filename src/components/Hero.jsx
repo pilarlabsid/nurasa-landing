@@ -1,10 +1,30 @@
+import { useState, useEffect } from 'react';
 import NurasaProduct from '../assets/general/nurasa-product.webp';
 
 const Hero = () => {
+    // Wait for 2 animation frames before showing — ensures browser has fully
+    // calculated layout with all CSS rules applied before content is visible.
+    // This prevents the center→left shift on both initial load and SPA navigation.
+    const [isReady, setIsReady] = useState(false);
+
+    useEffect(() => {
+        let raf1, raf2;
+        raf1 = requestAnimationFrame(() => {
+            raf2 = requestAnimationFrame(() => {
+                setIsReady(true);
+            });
+        });
+        return () => {
+            cancelAnimationFrame(raf1);
+            cancelAnimationFrame(raf2);
+        };
+    }, []);
+
     return (
         <section
             id="beranda"
             className="relative min-h-screen flex items-center overflow-hidden bg-warm-cream"
+            style={{ opacity: isReady ? 1 : 0, transition: 'opacity 0.3s ease' }}
         >
             {/* Decorative Background Elements */}
             <div className="absolute inset-0 rays-decoration opacity-50"></div>
