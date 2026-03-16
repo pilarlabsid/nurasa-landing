@@ -1,35 +1,66 @@
-name: Mirror to Nurasa Repo
+name: Sync to Nurasa Repo
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  mirror:
+  sync:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: Checkout source repo
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-      - name: Push to deploy repo
-        env:
-          MY_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          # Cek jika token kosong (akan terlihat di log GitHub Actions)
-          if [ -z "$MY_TOKEN" ]; then
-            echo "ERROR: GH_TOKEN is empty. Please check your Repository Secrets."
-            exit 1
-          fi
+    - name: Setup Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          
-          # Gunakan format URL yang lebih ketat
-          git remote add deploy "https://pilarlabsid:${MY_TOKEN}@github.com/pilarlabsid/nurasa.git" || \
-          git remote set-url deploy "https://pilarlabsid:${MY_TOKEN}@github.com/pilarlabsid/nurasa.git"
-          
-          git push deploy main --force
+    - name: Clone destination repo
+      env:
+        TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        echo "🔍 Cloning nurasa repo..."
+        # Kita clone repo private nurasa ke folder 'nurasa-sync'
+        git clone "https://x-access-token:${TOKEN}@github.com/pilarlabsid/nurasa.git" nurasa-sync
+
+    - name: Get commit info
+      id: commit-info
+      run: |
+        COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+        COMMIT_HASH=$(git log -1 --pretty=format:"%h")
+        echo "msg=$COMMIT_MSG" >> $GITHUB_OUTPUT
+        echo "hash=$COMMIT_HASH" >> $GITHUB_OUTPUT
+
+    - name: Sync files
+      run: |
+        echo "🔁 Syncing files..."
+        # rsync akan memindahkan semua file dari repo ini ke folder nurasa-sync
+        # Kita exclude folder git, github, dan folder hasil build
+        rsync -av --delete \
+          --exclude '.git/' \
+          --exclude '.github/' \
+          --exclude 'node_modules/' \
+          --exclude 'dist/' \
+          ./ nurasa-sync/
+
+    - name: Push changes
+      env:
+        TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        cd nurasa-sync
+        git add .
+        
+        # Cek jika ada perubahan sebelum commit
+        if git diff --staged --quiet; then
+          echo "No changes to sync"
+        else
+          git commit -m "${{ steps.commit-info.outputs.msg }} (sync from ${{ steps.commit-info.outputs.hash }})"
+          echo "🚀 Pushing to nurasa repo..."
+          git push origin main
+          echo "✅ Synced to nurasa repo"
+        fi
