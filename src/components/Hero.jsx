@@ -41,8 +41,8 @@ const Hero = () => {
                         {/* Main Headline */}
                         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-deep-cocoa mb-6 animate-fade-in-up leading-[1.1] tracking-tight">
                             Ada <span className="italic text-accent-amber">Cerita</span>
+                            <br className="lg:hidden" />
                             <span className="hidden lg:inline"><br /></span>
-                            <span className="lg:hidden"> </span>
                             di Setiap <span className="italic">Rasa</span>
                         </h1>
 
