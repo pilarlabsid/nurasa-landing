@@ -3,25 +3,11 @@ import { Link } from 'react-router-dom';
 import NurasaProduct from '/nurasa-product.webp';
 
 const Hero = () => {
-    const [isReady, setIsReady] = useState(false);
-
-    useEffect(() => {
-        let raf1, raf2;
-        raf1 = requestAnimationFrame(() => {
-            raf2 = requestAnimationFrame(() => {
-                setIsReady(true);
-            });
-        });
-        return () => {
-            cancelAnimationFrame(raf1);
-            cancelAnimationFrame(raf2);
-        };
-    }, []);
 
     // Reusable image block
     const HeroImage = ({ className = '' }) => (
-        <div className={`relative animate-fade-in-up ${className}`} style={{ animationDelay: '0.6s' }}>
-            <div className="relative aspect-square max-w-xs sm:max-w-sm lg:max-w-lg mx-auto">
+        <div className={`relative animate-fade-in-up ${className}`} style={{ animationDelay: '0.2s' }}>
+            <div className="hero-img-container relative sm:max-w-sm lg:max-w-lg mx-auto">
                 <div className="absolute inset-0 bg-accent-amber rounded-[2rem] lg:rounded-[4rem] rotate-6 opacity-20 scale-105"></div>
                 <div className="absolute inset-0 bg-deep-cocoa rounded-[2rem] lg:rounded-[4rem] -rotate-3 opacity-10 scale-105"></div>
                 <img
@@ -39,7 +25,6 @@ const Hero = () => {
         <section
             id="beranda"
             className="relative min-h-screen flex items-center overflow-hidden bg-warm-cream"
-            style={{ opacity: isReady ? 1 : 0, transition: 'opacity 0.3s ease' }}
         >
             {/* Decorative Background Elements */}
             <div className="absolute inset-0 rays-decoration opacity-50"></div>
@@ -56,11 +41,11 @@ const Hero = () => {
                             Ada <span className="italic text-accent-amber">Cerita</span><br />
                             di Setiap <span className="italic">Rasa</span>
                         </h1>
-                        <p className="max-w-xl text-lg text-cocoa-light leading-relaxed mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                        <p className="max-w-xl text-lg text-cocoa-light leading-relaxed mb-10 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                             Setiap gigitan adalah awal dari sebuah cerita baru. Nikmati cita rasa pedas
                             yang berkelas dari rempah pilihan petani lokal.
                         </p>
-                        <div className="flex flex-row gap-4 justify-start items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                        <div className="flex flex-row gap-4 justify-start items-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                             <a href="#produk" className="btn-primary px-8 py-4 text-lg">
                                 <span>Jelajahi Produk</span>
                                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +86,7 @@ const Hero = () => {
                     </p>
 
                     {/* CTA side by side — single line */}
-                    <div className="flex flex-row gap-3 justify-center items-center w-full animate-fade-in-up pb-4" style={{ animationDelay: '0.4s' }}>
+                    <div className="flex flex-row gap-3 justify-center items-center w-full animate-fade-in-up pb-4" style={{ animationDelay: '0.2s' }}>
                         <a href="#produk" className="btn-primary px-4 py-3 text-sm whitespace-nowrap flex items-center gap-2">
                             <span>Jelajahi Produk</span>
                             <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

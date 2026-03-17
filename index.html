@@ -47,18 +47,50 @@
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=block" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
     /* Critical CSS to prevent white flash and layout shift on initial render */
-    body {
-      background-color: #FAF6F1 !important;
-      margin: 0;
-      overflow-x: hidden;
+    :root {
+      --warm-cream: #FAF6F1;
+      --deep-cocoa: #3D2314;
     }
 
-    /* Lock hero text to left-align on desktop BEFORE Tailwind loads
-       This prevents the center to left shift (CLS issue) */
+    body {
+      background-color: var(--warm-cream) !important;
+      margin: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    /* Reserve space for Hero to prevent CLS */
+    #beranda {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background-color: var(--warm-cream);
+    }
+
+    .hero-img-container {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 320px; /* xs */
+      background-color: rgba(61, 35, 20, 0.05);
+      border-radius: 2.5rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) { .hero-img-container { max-width: 384px; } }
+    @media (min-width: 1024px) { .hero-img-container { max-width: 512px; border-radius: 4rem; } }
+
+    /* Prevent mobile hero shift */
+    @media (max-width: 1023px) {
+      #beranda .flex-col {
+        padding-top: 7rem;
+      }
+    }
+
+    /* Lock hero text to left-align on desktop BEFORE Tailwind loads */
     @media (min-width: 1024px) {
       #beranda .hero-text-col {
         align-items: flex-start !important;
