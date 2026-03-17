@@ -1,3 +1,35 @@
+export const webSiteData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Nurasa",
+  "url": "https://nurasa.store"
+};
+
+export const siteNavigationData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "SiteNavigationElement",
+      "position": 1,
+      "name": "Katalog Produk",
+      "url": "https://nurasa.store/katalog"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 2,
+      "name": "Tentang Kami",
+      "url": "https://nurasa.store/tentang"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 3,
+      "name": "Hubungi Kami",
+      "url": "https://nurasa.store/kontak"
+    }
+  ]
+};
+
 export const localBusinessData = {
   "@context": "https://schema.org",
   "@type": "FoodEstablishment",

@@ -5,7 +5,7 @@ import Features from '../components/Features'
 import Products from '../components/Products'
 import Testimonials from '../components/Testimonials'
 import StructuredData from '../components/StructuredData'
-import { localBusinessData } from '../data/structuredData'
+import { localBusinessData, webSiteData, siteNavigationData } from '../data/structuredData'
 
 const Home = () => {
   const organizationData = {
@@ -33,10 +33,12 @@ const Home = () => {
   return (
     <>
       <SEO 
-        title="Beranda" 
+        title="" 
         description="Selamat datang di Nurasa. Nikmati jajanan kering premium Nusantara, dari Basreng yang renyah hingga Popcorn Gourmet yang lumer. Ada cerita di setiap rasa."
         url="/"
       />
+      <StructuredData data={webSiteData} />
+      <StructuredData data={siteNavigationData} />
       <StructuredData data={organizationData} />
       <StructuredData data={localBusinessData} />
       <Hero />

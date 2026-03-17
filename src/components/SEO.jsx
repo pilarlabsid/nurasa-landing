@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, keywords, image, url, type = 'website' }) => {
-    const siteTitle = 'Nurasa - Ada Cerita di Setiap Rasa';
-    const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
-    const siteDescription = 'Jajanan kering premium Nusantara dengan cita rasa pedas berkelas. Nikmati Basreng dan Popcorn Gourmet terbaik dari Nurasa.';
+    const siteTitle = 'Nurasa - Ada Cerita di Setiap Rasa | Jajanan Kering Premium Nusantara';
+    const fullTitle = title ? `${title} | Nurasa` : siteTitle;
+    const siteDescription = 'Nurasa menghadirkan jajanan kering premium Nusantara dengan cita rasa pedas berkelas. Setiap gigitan adalah awal dari sebuah cerita baru.';
     const metaDescription = description || siteDescription;
     const metaKeywords = keywords || 'nurasa, jajanan kering, snack premium, basreng, popcorn, kuliner indonesia, cemilan pedas';
     const siteUrl = 'https://nurasa.store'; // Update with actual URL if different
