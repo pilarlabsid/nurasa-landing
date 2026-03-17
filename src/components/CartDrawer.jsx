@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
+import { Link } from 'react-router-dom';
 
 const CartDrawer = ({ isOpen, onClose }) => {
     const { 
@@ -64,12 +65,13 @@ const CartDrawer = ({ isOpen, onClose }) => {
                                     </div>
                                     <h3 className="text-base font-serif font-bold text-deep-cocoa mb-1">Keranjang Kosong</h3>
                                     <p className="text-cocoa-light/60 text-xs mb-6 leading-relaxed">Yuk, pilih camilan favoritmu dulu.</p>
-                                    <button 
+                                    <Link 
+                                        to="/katalog"
                                         onClick={onClose}
                                         className="btn-primary px-6 py-2.5 rounded-xl text-xs"
                                     >
                                         Mulai Belanja
-                                    </button>
+                                    </Link>
                                 </div>
                             ) : (
                                 <div className="space-y-5">

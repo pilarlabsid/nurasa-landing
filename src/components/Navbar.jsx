@@ -79,7 +79,7 @@ const Navbar = () => {
 
                         {/* Actions */}
                         <div className="hidden md:flex items-center gap-4">
-                            <button 
+                            <button
                                 onClick={() => setIsCartOpen(true)}
                                 className="relative p-2 text-deep-cocoa hover:text-accent-amber transition-colors group"
                                 aria-label="Buka keranjang"
@@ -100,7 +100,7 @@ const Navbar = () => {
 
                         {/* Mobile Controls */}
                         <div className="flex items-center gap-2 md:hidden">
-                            <button 
+                            <button
                                 onClick={() => setIsCartOpen(true)}
                                 className="relative p-2 text-deep-cocoa"
                                 aria-label="Buka keranjang"
@@ -155,17 +155,16 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.href}
-                                    className={`block font-medium transition-all duration-300 ${
-                                        location.pathname === link.href ? 'text-accent-amber' : 'text-deep-cocoa hover:text-accent-amber'
-                                    }`}
+                                    className={`block font-medium transition-all duration-300 ${location.pathname === link.href ? 'text-accent-amber' : 'text-deep-cocoa hover:text-accent-amber'
+                                        }`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                             <div className="pt-2">
-                                <Link 
-                                    to="/katalog" 
+                                <Link
+                                    to="/katalog"
                                     className="btn-primary w-full text-center text-sm font-bold uppercase tracking-wider block py-3.5 rounded-xl shadow-lg"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
