@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logoText from '../assets/logo/NurasaText.webp';
 import { useCart } from '../context/CartContext';
 import CartDrawer from './CartDrawer';
 
@@ -41,9 +40,9 @@ const Navbar = () => {
                         <Link to="/" className="flex items-start">
                             <div className="flex flex-col justify-start">
                                 <img
-                                    src={logoText}
+                                    src="/logo-text.webp"
                                     alt="Nurasa"
-                                    className="h-7 lg:h-8 object-contain object-left mb-0.5 hover:scale-105 transition-transform duration-300"
+                                    className="h-9 object-contain object-left mb-1 hover:scale-105 transition-transform duration-300"
                                 />
                                 <p className="text-[9px] lg:text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
                             </div>

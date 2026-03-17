@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import logoText from '../assets/logo/NurasaText.webp';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -58,7 +57,7 @@ const Footer = () => {
                         <Link to="/" className="flex items-start mb-6">
                             <div className="flex flex-col justify-start">
                                 <img
-                                    src={logoText}
+                                    src="/logo-text.webp"
                                     alt="Nurasa"
                                     className="h-9 object-contain object-left mb-1"
                                 />
