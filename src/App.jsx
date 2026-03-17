@@ -12,14 +12,12 @@ import NotFound from './pages/NotFound'
 import { CartProvider } from './context/CartContext'
 
 import { HelmetProvider } from 'react-helmet-async'
-import Preloader from './components/Preloader'
 import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
     <HelmetProvider>
       <CartProvider>
-        <Preloader />
         <Router>
           <ScrollToTop />
           <div className="min-h-screen bg-warm-cream">
