@@ -71,6 +71,22 @@ ${formState.message}`;
                 description="Punya pertanyaan atau ingin bekerjasama dengan Nurasa? Hubungi kami melalui WhatsApp, Instagram, atau Email. Kami siap membantu Anda."
                 url="/kontak"
             />
+            {/* Breadcrumbs */}
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-8 relative z-10">
+                <nav className="flex text-[11px] lg:text-xs font-bold tracking-widest uppercase text-cocoa-light/40" aria-label="Breadcrumb">
+                    <ol className="flex items-center space-x-2">
+                        <li>
+                            <Link to="/" className="hover:text-accent-amber transition-colors">Beranda</Link>
+                        </li>
+                        <li className="flex items-center space-x-2">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span className="text-accent-amber">Hubungi Kami</span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
             {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
                 <div className="rays-decoration"></div>

@@ -66,6 +66,22 @@ const AboutPage = () => {
                 description="Pelajari filosofi di balik Nurasa. Kami menghadirkan narasi cita rasa yang merayakan kekayaan rempah Nusantara melalui camilan premium."
                 url="/tentang"
             />
+            {/* Breadcrumbs */}
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-12 -mb-8 relative z-10">
+                <nav className="flex text-[11px] lg:text-xs font-bold tracking-widest uppercase text-cocoa-light/40" aria-label="Breadcrumb">
+                    <ol className="flex items-center space-x-2">
+                        <li>
+                            <Link to="/" className="hover:text-accent-amber transition-colors">Beranda</Link>
+                        </li>
+                        <li className="flex items-center space-x-2">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span className="text-accent-amber">Tentang Kami</span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
             {/* Page Hero */}
             <section className="relative py-24 md:py-32 bg-deep-cocoa overflow-hidden">
                 <div className="absolute inset-0">

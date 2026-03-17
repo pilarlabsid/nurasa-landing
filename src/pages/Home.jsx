@@ -5,6 +5,7 @@ import Features from '../components/Features'
 import Products from '../components/Products'
 import Testimonials from '../components/Testimonials'
 import StructuredData from '../components/StructuredData'
+import { localBusinessData } from '../data/structuredData'
 
 const Home = () => {
   const organizationData = {
@@ -12,7 +13,7 @@ const Home = () => {
     "@type": "Organization",
     "name": "Nurasa",
     "url": "https://nurasa.store",
-    "logo": "https://nurasa.store/logo.png",
+    "logo": "https://nurasa.store/logo-text.webp",
     "description": "Jajanan kering premium Nusantara dengan cita rasa pedas berkelas.",
     "sameAs": [
       "https://instagram.com/nurasa.store"
@@ -37,6 +38,7 @@ const Home = () => {
         url="/"
       />
       <StructuredData data={organizationData} />
+      <StructuredData data={localBusinessData} />
       <Hero />
       <About />
       <Features />

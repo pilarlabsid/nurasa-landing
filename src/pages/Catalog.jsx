@@ -175,7 +175,7 @@ const Catalog = () => {
             "position": index + 1,
             "url": `https://nurasa.store/katalog`,
             "name": product.name,
-            "image": `https://nurasa.store/assets/products/${product.name.replace(/ /g, '%20')}.webp`, // Estimate image URL
+            "image": `https://nurasa.store/og-image.webp`, 
             "description": product.description
         }))
     };
@@ -189,6 +189,21 @@ const Catalog = () => {
             />
             <StructuredData data={catalogStructuredData} />
             <div className="max-w-7xl mx-auto px-5 lg:px-8">
+                {/* Breadcrumbs */}
+                <nav className="flex mb-8 text-[11px] lg:text-xs font-bold tracking-widest uppercase text-cocoa-light/40" aria-label="Breadcrumb">
+                    <ol className="flex items-center space-x-2">
+                        <li>
+                            <Link to="/" className="hover:text-accent-amber transition-colors">Beranda</Link>
+                        </li>
+                        <li className="flex items-center space-x-2">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span className="text-accent-amber">Katalog</span>
+                        </li>
+                    </ol>
+                </nav>
+
                 {/* Header */}
                 <div className="mb-10 lg:mb-12 text-center">
                     <h1 className="font-serif text-4xl lg:text-6xl font-bold text-deep-cocoa mb-4">

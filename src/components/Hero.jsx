@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import NurasaProduct from '../assets/general/nurasa-product.webp';
+import { Link } from 'react-router-dom';
+import NurasaProduct from '/nurasa-product.webp';
 
 const Hero = () => {
     const [isReady, setIsReady] = useState(false);
@@ -66,9 +67,9 @@ const Hero = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </a>
-                            <a href="/tentang" className="btn-secondary px-8 py-4 text-lg">
+                            <Link to="/tentang" className="btn-secondary px-8 py-4 text-lg">
                                 Dengar Cerita Kami
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     {/* Right: Image */}
@@ -107,9 +108,9 @@ const Hero = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </a>
-                        <a href="/tentang" className="btn-secondary px-4 py-3 text-sm whitespace-nowrap">
+                        <Link to="/tentang" className="btn-secondary px-4 py-3 text-sm whitespace-nowrap">
                             Dengar Cerita
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

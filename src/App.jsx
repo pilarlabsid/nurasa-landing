@@ -7,6 +7,7 @@ import Contact from './pages/Contact'
 import AboutPage from './pages/AboutPage'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import NotFound from './pages/NotFound'
 
 import { CartProvider } from './context/CartContext'
 
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/katalog" element={<Catalog />} />
                 <Route path="/kontak" element={<Contact />} />
                 <Route path="/tentang" element={<AboutPage />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
             <Footer />
