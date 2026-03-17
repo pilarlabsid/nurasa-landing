@@ -174,10 +174,24 @@ const Catalog = () => {
         "itemListElement": products.map((product, index) => ({
             "@type": "ListItem",
             "position": index + 1,
-            "url": `https://nurasa.store/katalog`,
-            "name": product.name,
-            "image": `https://nurasa.store/og-image.webp`, 
-            "description": product.description
+            "item": {
+                "@type": "Product",
+                "name": product.name,
+                "image": `https://nurasa.store${product.image}`, // Use proper path
+                "description": product.description,
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Nurasa"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "url": `https://nurasa.store/katalog`,
+                    "priceCurrency": "IDR",
+                    "price": product.price.replace(/[^\d]/g, ''),
+                    "availability": product.isOutOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                }
+            }
         }))
     };
 
