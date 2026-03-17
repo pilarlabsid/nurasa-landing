@@ -1,4 +1,29 @@
+import { useState, useRef } from 'react';
+
 const Testimonials = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef(null);
+
+    const handleScroll = () => {
+        if (!scrollRef.current) return;
+        const scrollLeft = scrollRef.current.scrollLeft;
+        const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        const maxIndex = reviews.length - 1;
+        if (scrollWidth <= 0) {
+            setActiveIndex(0);
+            return;
+        }
+        const index = Math.round((scrollLeft / scrollWidth) * maxIndex);
+        setActiveIndex(index);
+    };
+
+    const scrollTo = (index) => {
+        if (!scrollRef.current) return;
+        const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        const maxIndex = reviews.length - 1;
+        const scrollToPosition = (scrollWidth / maxIndex) * index;
+        scrollRef.current.scrollTo({ left: scrollToPosition, behavior: 'smooth' });
+    };
     const reviews = [
         {
             name: 'Shinta Amelia',
@@ -37,9 +62,13 @@ const Testimonials = () => {
                     </h2>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div 
+                    ref={scrollRef}
+                    onScroll={handleScroll}
+                    className="flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-smooth md:mx-0 md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
+                >
                     {reviews.map((review, idx) => (
-                        <div key={idx} className="bg-cocoa-dark/40 backdrop-blur-sm p-8 rounded-[2.5rem] border border-ivory/10 hover:border-accent-amber/30 transition-all duration-500 flex flex-col h-full">
+                        <div key={idx} className="w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center bg-cocoa-dark/40 backdrop-blur-sm p-8 rounded-[2.5rem] border border-ivory/10 hover:border-accent-amber/30 transition-all duration-500 flex flex-col h-full">
                             <div className="flex gap-1 mb-6 text-accent-amber">
                                 {[...Array(review.rating)].map((_, i) => (
                                     <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
@@ -60,6 +89,18 @@ const Testimonials = () => {
                                 </div>
                             </div>
                         </div>
+                    ))}
+                </div>
+
+                {/* Mobile Dots Indicator */}
+                <div className="flex justify-center items-center gap-2 mt-4 md:hidden">
+                    {reviews.map((_, idx) => (
+                        <button 
+                            key={idx} 
+                            onClick={() => scrollTo(idx)}
+                            aria-label={`Go to slide ${idx + 1}`}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-6 bg-accent-amber' : 'w-1.5 bg-ivory/20'}`}
+                        />
                     ))}
                 </div>
             </div>

@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
             }`}
         >
             {/* Image Container - Reduced Height */}
-            <div className="relative h-60 overflow-hidden shrink-0">
+            <div className="relative h-48 sm:h-56 lg:h-60 overflow-hidden shrink-0">
                 <img
                     src={product.image}
                     alt={product.name}
@@ -55,18 +55,18 @@ const ProductCard = ({ product }) => {
             </div>
 
             {/* Content - Tighter Padding */}
-            <div className="p-5 lg:p-6 flex flex-col flex-grow">
-                <div className="mb-4">
-                    <h3 className="font-serif text-lg lg:text-xl font-bold text-deep-cocoa mb-0.5 leading-tight">
+            <div className="p-5 flex flex-col flex-grow">
+                <div className="mb-3">
+                    <h3 className="font-serif text-lg md:text-xl font-bold text-deep-cocoa mb-1 leading-tight">
                         {product.name}
                     </h3>
-                    <p className="text-accent-amber text-[9px] lg:text-[10px] font-bold tracking-[0.1em] uppercase opacity-80">
+                    <p className="text-accent-amber text-[10px] font-bold tracking-[0.1em] uppercase opacity-80">
                         {product.tagline}
                     </p>
                 </div>
 
                 {/* Price Display - More Compact */}
-                <div className="bg-warm-cream/40 rounded-xl p-3 mb-5 border border-deep-cocoa/5">
+                <div className="bg-warm-cream/40 rounded-xl p-3 mb-4 border border-deep-cocoa/5">
                     <div className="flex items-center justify-between">
                         <div className="flex flex-col">
                             <span className="text-[9px] text-cocoa-light/50 font-bold uppercase tracking-widest mb-0.5">Harga</span>
@@ -85,25 +85,25 @@ const ProductCard = ({ product }) => {
                 </div>
 
                 {/* Variant Selector - Tighter Grid */}
-                <div className="mb-6">
-                    <div className="flex items-center justify-between mb-3">
-                        <p className="text-[10px] font-bold text-deep-cocoa/40 uppercase tracking-widest">Pilih Varian</p>
+                <div className="mb-5">
+                    <div className="flex items-center justify-between mb-2.5">
+                        <p className="text-[11px] font-bold text-deep-cocoa/50 uppercase tracking-widest">Pilih Varian</p>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                         {product.variants.map(v => (
                             <button 
                                 key={v.id}
                                 onClick={() => setSelectedVariant(v)}
-                                className={`relative py-2 px-2 rounded-xl border-2 transition-all duration-300 ${
+                                className={`relative py-2.5 px-2 rounded-xl border-2 transition-all duration-300 ${
                                     selectedVariant.id === v.id 
                                     ? 'bg-ivory border-accent-amber shadow-sm' 
-                                    : 'bg-transparent border-deep-cocoa/5 hover:border-deep-cocoa/10 text-cocoa-light'
+                                    : 'bg-transparent border-deep-cocoa/5 hover:border-deep-cocoa/15 text-cocoa-light'
                                 }`}
                             >
-                                <span className={`block text-[10px] font-bold mb-0.5 ${selectedVariant.id === v.id ? 'text-deep-cocoa' : ''}`}>
+                                <span className={`block text-[11px] font-bold mb-0.5 ${selectedVariant.id === v.id ? 'text-deep-cocoa' : ''}`}>
                                     {v.label || v.size}
                                 </span>
-                                <span className={`block text-[8px] uppercase tracking-tighter opacity-50 ${selectedVariant.id === v.id ? 'text-accent-amber opacity-100' : ''}`}>
+                                <span className={`block text-[9px] uppercase tracking-tighter opacity-60 ${selectedVariant.id === v.id ? 'text-accent-amber opacity-100' : ''}`}>
                                     {v.packaging.split(' ')[0]}
                                 </span>
                             </button>
@@ -196,7 +196,7 @@ const Catalog = () => {
     };
 
     return (
-        <div className="pt-32 pb-20 min-h-screen bg-warm-cream">
+        <div className="pt-24 lg:pt-28 pb-16 min-h-screen bg-warm-cream">
             <SEO 
                 title="Katalog Produk" 
                 description="Jelajahi koleksi lengkap camilan premium Nurasa. Basreng berbagai level pedas dan Popcorn Gourmet dengan rasa istimewa."
@@ -205,7 +205,7 @@ const Catalog = () => {
             <StructuredData data={catalogStructuredData} />
             <div className="max-w-7xl mx-auto px-5 lg:px-8">
                 {/* Breadcrumbs */}
-                <nav className="flex mb-8 text-[11px] lg:text-xs font-bold tracking-widest uppercase text-cocoa-light/40" aria-label="Breadcrumb">
+                <nav className="flex mb-6 text-[11px] lg:text-xs font-bold tracking-widest uppercase text-cocoa-light/50" aria-label="Breadcrumb">
                     <ol className="flex items-center space-x-2">
                         <li>
                             <Link to="/" className="hover:text-accent-amber transition-colors">Beranda</Link>
@@ -220,24 +220,24 @@ const Catalog = () => {
                 </nav>
 
                 {/* Header */}
-                <div className="mb-10 lg:mb-12 text-center">
-                    <h1 className="font-serif text-4xl lg:text-6xl font-bold text-deep-cocoa mb-4">
+                <div className="mb-8 md:mb-10 text-center">
+                    <h1 className="font-serif text-4xl lg:text-5xl font-bold text-deep-cocoa mb-3">
                         Katalog <span className="text-accent-amber italic">Nurasa</span>
                     </h1>
-                    <p className="text-cocoa-light text-sm lg:text-base max-w-2xl mx-auto">
+                    <p className="text-cocoa-light text-sm max-w-2xl mx-auto">
                         Jelajahi seluruh koleksi jajanan premium kami. Dari renyahnya Basreng hingga lezatnya Popcorn Gourmet.
                     </p>
                 </div>
 
                 {/* Filters & Search */}
-                <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between">
+                <div className="flex flex-col md:flex-row gap-5 mb-10 items-center justify-between">
                     {/* Categories */}
                     <div className="flex gap-2 p-1 bg-ivory/50 rounded-2xl border border-deep-cocoa/5 overflow-x-auto w-full md:w-auto custom-scrollbar">
                         {categories.map(cat => (
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
-                                className={`px-4 lg:px-6 py-2 lg:py-2.5 rounded-xl text-xs lg:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                                className={`px-4 lg:px-5 py-2.5 rounded-xl text-xs font-medium transition-all duration-300 whitespace-nowrap ${
                                     selectedCategory === cat
                                         ? 'bg-deep-cocoa text-ivory shadow-lg transform scale-105'
                                         : 'text-cocoa-light hover:bg-warm-cream'
@@ -255,9 +255,9 @@ const Catalog = () => {
                             placeholder="Cari produk favoritmu..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-4 py-3 bg-ivory border border-deep-cocoa/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all"
+                            className="w-full pl-11 pr-4 py-3 text-sm bg-ivory border border-deep-cocoa/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all"
                         />
-                        <svg className="absolute left-4 top-3.5 w-5 h-5 text-cocoa-light/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="absolute left-4 top-3.5 w-4 h-4 text-cocoa-light/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>

@@ -1,9 +1,34 @@
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 
 const Products = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef(null);
+
     // Show balanced selection: Original, Extra Pedas, and Caramel
     const featuredProducts = [products[0], products[2], products[3]]; 
+
+    const handleScroll = () => {
+        if (!scrollRef.current) return;
+        const scrollLeft = scrollRef.current.scrollLeft;
+        const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        const maxIndex = featuredProducts.length - 1;
+        if (scrollWidth <= 0) {
+            setActiveIndex(0);
+            return;
+        }
+        const index = Math.round((scrollLeft / scrollWidth) * maxIndex);
+        setActiveIndex(index);
+    };
+
+    const scrollTo = (index) => {
+        if (!scrollRef.current) return;
+        const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        const maxIndex = featuredProducts.length - 1;
+        const scrollToPosition = (scrollWidth / maxIndex) * index;
+        scrollRef.current.scrollTo({ left: scrollToPosition, behavior: 'smooth' });
+    };
 
     return (
         <section id="produk" className="relative py-20 bg-warm-cream overflow-hidden">
@@ -25,11 +50,15 @@ const Products = () => {
                 </div>
 
                 {/* Products Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+                <div 
+                    ref={scrollRef}
+                    onScroll={handleScroll}
+                    className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-smooth md:mx-0 md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
+                >
                     {featuredProducts.map((product) => (
                         <div
                             key={product.id}
-                            className="group bg-ivory rounded-[2rem] overflow-hidden border border-deep-cocoa/5 hover:shadow-[0_30px_60px_rgba(61,35,20,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
+                            className="w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center group bg-ivory rounded-[2rem] overflow-hidden border border-deep-cocoa/5 hover:shadow-[0_30px_60px_rgba(61,35,20,0.1)] transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
                         >
                             {/* Product Image */}
                             <div className="relative h-56 lg:h-64 overflow-hidden shrink-0">
@@ -87,6 +116,18 @@ const Products = () => {
                                 </div>
                             </div>
                         </div>
+                    ))}
+                </div>
+
+                {/* Mobile Dots Indicator */}
+                <div className="flex justify-center items-center gap-2 mt-4 md:hidden">
+                    {featuredProducts.map((_, idx) => (
+                        <button 
+                            key={idx} 
+                            onClick={() => scrollTo(idx)}
+                            aria-label={`Go to slide ${idx + 1}`}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-6 bg-accent-amber' : 'w-1.5 bg-deep-cocoa/20'}`}
+                        />
                     ))}
                 </div>
 

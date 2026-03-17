@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import NurasaProduct from '/nurasa-product.webp';
 
 const Hero = () => {
 
     // Reusable image block
     const HeroImage = ({ className = '' }) => (
         <div className={`relative animate-fade-in-up ${className}`} style={{ animationDelay: '0.2s' }}>
-            <div className="hero-img-container relative sm:max-w-sm lg:max-w-lg mx-auto">
+            <div className="hero-img-container relative sm:max-w-sm lg:max-w-[440px] xl:max-w-md mx-auto">
                 <div className="absolute inset-0 bg-accent-amber rounded-[2rem] lg:rounded-[4rem] rotate-6 opacity-20 scale-105"></div>
                 <div className="absolute inset-0 bg-deep-cocoa rounded-[2rem] lg:rounded-[4rem] -rotate-3 opacity-10 scale-105"></div>
                 <img
-                    src={NurasaProduct}
+                    src="/nurasa-product.webp"
                     alt="Nurasa Product"
                     fetchPriority="high"
                     loading="eager"
@@ -29,7 +28,7 @@ const Hero = () => {
             {/* Decorative Background Elements */}
             <div className="absolute inset-0 rays-decoration opacity-50"></div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-12 lg:py-32 w-full">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-14 pb-12 lg:pt-32 lg:pb-32 w-full">
                 {/* ─── Desktop Layout: two columns ─── */}
                 <div className="hidden lg:flex flex-row items-center gap-20">
                     {/* Left: Text */}
@@ -77,7 +76,7 @@ const Hero = () => {
                     </h1>
 
                     {/* Image — between headline and description on mobile */}
-                    <HeroImage className="w-full" />
+                    <HeroImage className="w-4/5 max-w-[280px] sm:max-w-sm" />
 
                     {/* Description */}
                     <p className="max-w-sm text-base text-cocoa-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>

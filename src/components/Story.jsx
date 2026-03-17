@@ -1,4 +1,29 @@
+import { useState, useRef } from 'react';
+
 const Story = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef(null);
+
+    const handleScroll = () => {
+        if (!scrollRef.current) return;
+        const scrollLeft = scrollRef.current.scrollLeft;
+        const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        const maxIndex = pillars.length - 1;
+        if (scrollWidth <= 0) {
+            setActiveIndex(0);
+            return;
+        }
+        const index = Math.round((scrollLeft / scrollWidth) * maxIndex);
+        setActiveIndex(index);
+    };
+
+    const scrollTo = (index) => {
+        if (!scrollRef.current) return;
+        const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        const maxIndex = pillars.length - 1;
+        const scrollToPosition = (scrollWidth / maxIndex) * index;
+        scrollRef.current.scrollTo({ left: scrollToPosition, behavior: 'smooth' });
+    };
     const pillars = [
         {
             title: 'The Origin',
@@ -62,11 +87,15 @@ const Story = () => {
                     {/* Connection Line (Desktop) */}
                     <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent-amber/30 to-transparent -translate-y-1/2"></div>
 
-                    <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+                    <div 
+                        ref={scrollRef}
+                        onScroll={handleScroll}
+                        className="flex md:grid md:grid-cols-3 gap-8 lg:gap-12 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 scroll-smooth md:mx-0 md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
+                    >
                         {pillars.map((pillar, index) => (
                             <div
                                 key={pillar.title}
-                                className="relative group"
+                                className="w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center relative group mt-4 md:mt-0"
                             >
                                 {/* Circle Number */}
                                 <div className="relative z-10 w-20 h-20 mx-auto mb-8 rounded-full bg-gradient-to-br from-accent-amber to-accent-red flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500">
@@ -93,6 +122,18 @@ const Story = () => {
                                     </div>
                                 </div>
                             </div>
+                        ))}
+                    </div>
+
+                    {/* Mobile Dots Indicator */}
+                    <div className="flex justify-center items-center gap-2 mt-4 md:hidden">
+                        {pillars.map((_, idx) => (
+                            <button 
+                                key={idx} 
+                                onClick={() => scrollTo(idx)}
+                                aria-label={`Go to slide ${idx + 1}`}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-6 bg-accent-amber' : 'w-1.5 bg-ivory/20'}`}
+                            />
                         ))}
                     </div>
                 </div>

@@ -26,13 +26,28 @@ const Navbar = () => {
         { name: 'Kontak', href: '/kontak' },
     ];
 
+    // Compute navbar classes and styles
+    const navClasses = isHomePage
+        ? isScrolled
+            ? 'backdrop-blur-md shadow-lg py-3 lg:py-4'
+            : 'bg-transparent py-5 lg:py-6'
+        : isScrolled
+            ? 'backdrop-blur-md shadow-lg py-3 lg:py-4'
+            : 'backdrop-blur-sm shadow-sm py-3 lg:py-4';
+
+    // For non-home pages, always enforce solid background via inline style
+    // This ensures Tailwind's custom color opacity issue doesn't cause transparency
+    const navStyle = !isHomePage
+        ? { backgroundColor: 'rgba(250, 246, 241, 0.97)' }
+        : isScrolled
+            ? { backgroundColor: 'rgba(250, 246, 241, 0.95)' }
+            : {};
+
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                    ? 'bg-warm-cream/95 backdrop-blur-md shadow-lg py-3 lg:py-4'
-                    : 'bg-transparent py-5 lg:py-6'
-                    }`}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}
+                style={navStyle}
             >
                 <div className="max-w-7xl mx-auto px-5 lg:px-8">
                     <div className="flex items-center justify-between">
@@ -42,9 +57,9 @@ const Navbar = () => {
                                 <img
                                     src="/logo-text.webp"
                                     alt="Nurasa"
-                                    className="h-9 object-contain object-left mb-1 hover:scale-105 transition-transform duration-300"
+                                    className="h-7 lg:h-9 object-contain object-left mb-0.5 lg:mb-1 hover:scale-105 transition-transform duration-300"
                                 />
-                                <p className="text-[9px] lg:text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
+                                <p className="text-[8px] lg:text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>
                             </div>
                         </Link>
 
@@ -135,12 +150,12 @@ const Navbar = () => {
                         className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'max-h-96 mt-4' : 'max-h-0'
                             }`}
                     >
-                        <div className="bg-ivory/95 backdrop-blur-xl rounded-[1.5rem] p-5 space-y-4 shadow-xl border border-deep-cocoa/5">
+                        <div className="bg-ivory/95 backdrop-blur-xl rounded-[1.5rem] p-5 space-y-4 border border-deep-cocoa/5">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     to={link.href}
-                                    className={`block text-lg font-serif font-bold transition-all duration-300 ${
+                                    className={`block font-medium transition-all duration-300 ${
                                         location.pathname === link.href ? 'text-accent-amber' : 'text-deep-cocoa hover:text-accent-amber'
                                     }`}
                                     onClick={() => setIsMobileMenuOpen(false)}

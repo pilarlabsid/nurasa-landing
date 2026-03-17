@@ -16,7 +16,7 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Simulate form submission
-        const text = `🌐 *Pesan dari Website Nurasa*
+        const text = `*Pesan dari Website Nurasa*
 ────────────────────
 
 Halo Nurasa, saya ${formState.name}.
@@ -66,9 +66,9 @@ ${formState.message}`;
     ];
 
     return (
-        <div className="pt-32 pb-20 min-h-screen bg-warm-cream overflow-hidden">
-            <SEO 
-                title="Hubungi Kami" 
+        <div className="pt-24 lg:pt-28 pb-20 min-h-screen bg-warm-cream overflow-hidden">
+            <SEO
+                title="Hubungi Kami"
                 description="Punya pertanyaan atau ingin bekerjasama dengan Nurasa? Hubungi kami melalui WhatsApp, Instagram, atau Email. Kami siap membantu Anda."
                 url="/kontak"
             />
@@ -95,39 +95,39 @@ ${formState.message}`;
 
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                 {/* Header */}
-                <div className="mb-20 text-center">
-                    <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-sm mb-4">
+                <div className="mb-10 text-center">
+                    <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-xs mb-3">
                         Hubungi Kami
                     </p>
-                    <h1 className="font-serif text-5xl md:text-7xl font-bold text-deep-cocoa mb-6">
+                    <h1 className="font-serif text-4xl md:text-5xl font-bold text-deep-cocoa mb-3">
                         Mari <span className="text-accent-amber italic">Bercerita</span>
                     </h1>
-                    <p className="text-cocoa-light max-w-2xl mx-auto text-lg leading-relaxed">
-                        Punya pertanyaan tentang produk kami atau ingin kerjasama? 
+                    <p className="text-cocoa-light max-w-xl mx-auto text-sm leading-relaxed">
+                        Punya pertanyaan tentang produk kami atau ingin kerjasama?
                         Kami selalu senang mendengar cerita dari Anda.
                     </p>
                 </div>
 
                 <div className="grid lg:grid-cols-5 gap-8 items-start">
                     {/* Contact Info Sidebar */}
-                    <div className="lg:col-span-2 space-y-8">
+                    <div className="lg:col-span-2 space-y-3">
                         {contactInfo.map((info) => (
                             <a
                                 key={info.title}
                                 href={info.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group block bg-ivory p-6 rounded-[2rem] border border-deep-cocoa/5 hover:border-accent-amber/20 hover:shadow-2xl transition-all duration-500"
+                                className="group block bg-ivory p-5 rounded-2xl border border-deep-cocoa/5 hover:border-accent-amber/20 hover:shadow-lg transition-all duration-500"
                             >
-                                <div className="flex items-center gap-6">
-                                    <div className="w-14 h-14 rounded-2xl bg-warm-cream text-deep-cocoa flex items-center justify-center group-hover:bg-deep-cocoa group-hover:text-ivory transition-colors duration-500">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-xl bg-warm-cream text-deep-cocoa flex items-center justify-center group-hover:bg-deep-cocoa group-hover:text-ivory transition-colors duration-500 shrink-0">
                                         {info.icon}
                                     </div>
                                     <div>
-                                        <p className="text-accent-amber text-xs font-bold tracking-widest uppercase mb-1">
+                                        <p className="text-accent-amber text-[10px] font-bold tracking-widest uppercase mb-0.5">
                                             {info.title}
                                         </p>
-                                        <p className="text-deep-cocoa font-bold text-lg">
+                                        <p className="text-deep-cocoa font-bold text-base">
                                             {info.value}
                                         </p>
                                     </div>
@@ -136,77 +136,77 @@ ${formState.message}`;
                         ))}
 
                         {/* Location Card */}
-                        <div className="bg-deep-cocoa text-ivory p-10 rounded-[2.5rem] relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-accent-amber/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                            <h4 className="font-serif text-2xl font-bold mb-6 italic">Lokasi Kami</h4>
-                            <p className="text-warm-cream/80 leading-relaxed mb-8">
+                        <div className="bg-deep-cocoa text-ivory p-6 rounded-2xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-accent-amber/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                            <h4 className="font-serif text-lg font-bold mb-2 italic">Lokasi Kami</h4>
+                            <p className="text-warm-cream/80 leading-relaxed mb-4 text-sm">
                                 Jakarta Selatan, Indonesia<br />
                                 Pengiriman tersedia ke seluruh wilayah Nusantara.
                             </p>
                             <div className="flex items-center gap-2 text-accent-amber">
                                 <span className="w-2 h-2 rounded-full bg-accent-amber animate-pulse"></span>
-                                <span className="text-sm font-medium">Melayani seluruh Indonesia</span>
+                                <span className="text-xs font-medium">Melayani seluruh Indonesia</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Contact Form */}
                     <div className="lg:col-span-3">
-                        <div className="bg-ivory/80 backdrop-blur-md p-10 md:p-14 rounded-[3rem] border border-deep-cocoa/5 shadow-xl min-h-[500px] flex flex-col justify-center">
+                        <div className="bg-ivory/80 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-deep-cocoa/5 shadow-xl">
                             {isSubmitted ? (
-                                <div className="text-center animate-fade-in">
-                                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div className="text-center animate-fade-in py-8">
+                                    <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-5">
+                                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <h3 className="font-serif text-3xl font-bold text-deep-cocoa mb-4">Pesan Terkirim!</h3>
-                                    <p className="text-cocoa-light mb-8 max-w-sm mx-auto">
+                                    <h3 className="font-serif text-2xl font-bold text-deep-cocoa mb-3">Pesan Terkirim!</h3>
+                                    <p className="text-cocoa-light mb-6 max-w-sm mx-auto text-sm">
                                         Terima kasih sudah menghubungi Nurasa. Kami juga telah membuka WhatsApp Anda untuk mempercepat komunikasi.
                                     </p>
                                     <button
                                         onClick={() => setIsSubmitted(false)}
-                                        className="text-accent-amber font-bold hover:underline"
+                                        className="text-accent-amber font-bold hover:underline text-sm"
                                     >
                                         Kirim pesan lainnya
                                     </button>
                                 </div>
                             ) : (
                                 <>
-                                    <h3 className="font-serif text-3xl font-bold text-deep-cocoa mb-10">Kirim Pesan</h3>
-                                    
-                                    <form onSubmit={handleSubmit} className="space-y-8">
-                                        <div className="grid md:grid-cols-2 gap-8">
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-bold text-deep-cocoa/60 uppercase tracking-widest ml-2">Nama Lengkap</label>
+                                    <h3 className="font-serif text-xl font-bold text-deep-cocoa mb-6">Kirim Pesan</h3>
+
+                                    <form onSubmit={handleSubmit} className="space-y-5">
+                                        <div className="grid md:grid-cols-2 gap-4">
+                                            <div className="space-y-1.5">
+                                                <label className="text-[11px] font-bold text-deep-cocoa/60 uppercase tracking-widest ml-1">Nama Lengkap</label>
                                                 <input
                                                     required
                                                     type="text"
                                                     placeholder="Masukkan nama Anda"
                                                     value={formState.name}
-                                                    onChange={(e) => setFormState({...formState, name: e.target.value})}
-                                                    className="w-full px-6 py-4 bg-warm-cream/50 border border-deep-cocoa/5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all"
+                                                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                                                    className="w-full px-4 py-3 text-sm bg-warm-cream/50 border border-deep-cocoa/8 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all"
                                                 />
                                             </div>
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-bold text-deep-cocoa/60 uppercase tracking-widest ml-2">Email</label>
+                                            <div className="space-y-1.5">
+                                                <label className="text-[11px] font-bold text-deep-cocoa/60 uppercase tracking-widest ml-1">Email</label>
                                                 <input
                                                     required
                                                     type="email"
                                                     placeholder="alamat@email.com"
                                                     value={formState.email}
-                                                    onChange={(e) => setFormState({...formState, email: e.target.value})}
-                                                    className="w-full px-6 py-4 bg-warm-cream/50 border border-deep-cocoa/5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all"
+                                                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                                                    className="w-full px-4 py-3 text-sm bg-warm-cream/50 border border-deep-cocoa/8 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all"
                                                 />
                                             </div>
                                         </div>
 
-                                        <div className="space-y-2">
-                                            <label className="text-xs font-bold text-deep-cocoa/60 uppercase tracking-widest ml-2">Subjek</label>
+                                        <div className="space-y-1.5">
+                                            <label className="text-[11px] font-bold text-deep-cocoa/60 uppercase tracking-widest ml-1">Subjek</label>
                                             <select
                                                 value={formState.subject}
-                                                onChange={(e) => setFormState({...formState, subject: e.target.value})}
-                                                className="w-full px-6 py-4 bg-warm-cream/50 border border-deep-cocoa/5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all appearance-none"
+                                                onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
+                                                className="w-full px-4 py-3 text-sm bg-warm-cream/50 border border-deep-cocoa/8 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all appearance-none"
                                             >
                                                 <option>Tanya Produk</option>
                                                 <option>Kerjasama Reseller</option>
@@ -215,26 +215,26 @@ ${formState.message}`;
                                             </select>
                                         </div>
 
-                                        <div className="space-y-2">
-                                            <label className="text-xs font-bold text-deep-cocoa/60 uppercase tracking-widest ml-2">Pesan</label>
+                                        <div className="space-y-1.5">
+                                            <label className="text-[11px] font-bold text-deep-cocoa/60 uppercase tracking-widest ml-1">Pesan</label>
                                             <textarea
                                                 required
-                                                rows="5"
+                                                rows="4"
                                                 placeholder="Ceritakan pesan Anda di sini..."
                                                 value={formState.message}
-                                                onChange={(e) => setFormState({...formState, message: e.target.value})}
-                                                className="w-full px-6 py-4 bg-warm-cream/50 border border-deep-cocoa/5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all resize-none"
+                                                onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                                                className="w-full px-4 py-3 text-sm bg-warm-cream/50 border border-deep-cocoa/8 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-amber/20 focus:border-accent-amber transition-all resize-none"
                                             ></textarea>
                                         </div>
 
                                         <button
                                             type="submit"
-                                            className="w-full btn-primary py-5 text-lg font-bold shadow-[0_10px_30px_rgba(196,92,38,0.2)]"
+                                            className="w-full btn-primary py-3.5 text-sm font-bold shadow-[0_8px_20px_rgba(196,92,38,0.2)]"
                                         >
                                             Kirim ke WhatsApp
                                         </button>
-                                        
-                                        <p className="text-center text-cocoa-light/60 text-xs">
+
+                                        <p className="text-center text-cocoa-light/50 text-xs">
                                             *Pesan akan diteruskan ke layanan WhatsApp kami untuk respon lebih cepat.
                                         </p>
                                     </form>

@@ -1,8 +1,39 @@
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import basrengLifestyle from '../assets/general/basreng-lifestyle.webp';
 import SEO from '../components/SEO';
 
 const AboutPage = () => {
+    const [activeFilosofi, setActiveFilosofi] = useState(0);
+    const filosofiRef = useRef(null);
+
+    const handleFilosofiScroll = () => {
+        if (!filosofiRef.current) return;
+        const scrollWidth = filosofiRef.current.scrollWidth - filosofiRef.current.clientWidth;
+        if (scrollWidth <= 0) { setActiveFilosofi(0); return; }
+        setActiveFilosofi(Math.round((filosofiRef.current.scrollLeft / scrollWidth) * (filosofi.length - 1)));
+    };
+    const scrollToFilosofi = (index) => {
+        if (!filosofiRef.current) return;
+        const scrollWidth = filosofiRef.current.scrollWidth - filosofiRef.current.clientWidth;
+        filosofiRef.current.scrollTo({ left: (scrollWidth / (filosofi.length - 1)) * index, behavior: 'smooth' });
+    };
+
+    const [activePillar, setActivePillar] = useState(0);
+    const pillarRef = useRef(null);
+
+    const handlePillarScroll = () => {
+        if (!pillarRef.current) return;
+        const scrollWidth = pillarRef.current.scrollWidth - pillarRef.current.clientWidth;
+        if (scrollWidth <= 0) { setActivePillar(0); return; }
+        setActivePillar(Math.round((pillarRef.current.scrollLeft / scrollWidth) * (pillars.length - 1)));
+    };
+    const scrollToPillar = (index) => {
+        if (!pillarRef.current) return;
+        const scrollWidth = pillarRef.current.scrollWidth - pillarRef.current.clientWidth;
+        pillarRef.current.scrollTo({ left: (scrollWidth / (pillars.length - 1)) * index, behavior: 'smooth' });
+    };
+
     const filosofi = [
         {
             title: 'NUR',
@@ -60,15 +91,15 @@ const AboutPage = () => {
     ];
 
     return (
-        <div className="pt-20 bg-ivory overflow-hidden">
+        <div className="pt-20 lg:pt-24 bg-ivory overflow-hidden">
             <SEO 
                 title="Tentang Kami" 
                 description="Pelajari filosofi di balik Nurasa. Kami menghadirkan narasi cita rasa yang merayakan kekayaan rempah Nusantara melalui camilan premium."
                 url="/tentang"
             />
             {/* Breadcrumbs */}
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-12 -mb-8 relative z-10">
-                <nav className="flex text-[11px] lg:text-xs font-bold tracking-widest uppercase text-cocoa-light/40" aria-label="Breadcrumb">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 relative z-10">
+                <nav className="flex text-[11px] lg:text-xs font-bold tracking-widest uppercase text-cocoa-light/50" aria-label="Breadcrumb">
                     <ol className="flex items-center space-x-2">
                         <li>
                             <Link to="/" className="hover:text-accent-amber transition-colors">Beranda</Link>
@@ -83,87 +114,119 @@ const AboutPage = () => {
                 </nav>
             </div>
             {/* Page Hero */}
-            <section className="relative py-24 md:py-32 bg-deep-cocoa overflow-hidden">
+            <section className="relative py-12 md:py-20 bg-deep-cocoa overflow-hidden">
                 <div className="absolute inset-0">
                     <img src={basrengLifestyle} alt="Background" className="w-full h-full object-cover opacity-20 scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-b from-deep-cocoa via-deep-cocoa/80 to-deep-cocoa"></div>
                 </div>
                 <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-                    <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-sm mb-4 animate-fade-in">
+                    <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-xs mb-3 animate-fade-in">
                         Tentang Kami
                     </p>
-                    <h1 className="font-serif text-5xl md:text-7xl font-bold text-ivory mb-6 leading-tight">
+                    <h1 className="font-serif text-4xl md:text-6xl font-bold text-ivory mb-4 leading-tight">
                         Cahaya dalam <br />
                         <span className="italic text-accent-amber">Setiap Rasa</span>
                     </h1>
-                    <p className="max-w-xl mx-auto text-warm-cream/70 text-base md:text-lg leading-relaxed">
+                    <p className="max-w-lg mx-auto text-warm-cream/70 text-sm md:text-base leading-relaxed">
                         Kami tidak sekadar menjual camilan. Kami menghadirkan narasi cita rasa yang merayakan kekayaan rempah Nusantara.
                     </p>
                 </div>
             </section>
 
             {/* Philosophy Section */}
-            <section className="relative py-20 bg-ivory">
+            <section className="relative py-12 bg-ivory">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <h2 className="font-serif text-3xl md:text-4xl font-bold text-deep-cocoa mb-4">
+                    <div className="text-center mb-8">
+                        <h2 className="font-serif text-2xl md:text-3xl font-bold text-deep-cocoa mb-3">
                             Makna di Balik <span className="italic">Nurasa</span>
                         </h2>
-                        <div className="w-20 h-1 bg-gradient-to-r from-deep-cocoa to-accent-amber mx-auto rounded-full"></div>
+                        <div className="w-16 h-0.5 bg-gradient-to-r from-deep-cocoa to-accent-amber mx-auto rounded-full"></div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6 lg:gap-10 max-w-4xl mx-auto">
+                    <div 
+                        ref={filosofiRef}
+                        onScroll={handleFilosofiScroll}
+                        className="flex md:grid md:grid-cols-2 gap-5 max-w-4xl mx-auto overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-smooth md:mx-0 md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
+                    >
                         {filosofi.map((item) => (
-                            <div key={item.title} className="group relative bg-warm-cream rounded-[2.5rem] p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
-                                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-deep-cocoa to-cocoa-light flex items-center justify-center text-ivory mb-8 group-hover:scale-110 transition-transform duration-300">
+                            <div key={item.title} className="w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center group relative bg-warm-cream rounded-2xl p-8 transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-deep-cocoa to-cocoa-light flex items-center justify-center text-ivory mb-5 group-hover:scale-105 transition-transform duration-300">
                                     {item.icon}
                                 </div>
-                                <h3 className="font-serif text-4xl font-bold text-deep-cocoa mb-2">{item.title}</h3>
-                                <p className="text-accent-amber font-bold text-xs tracking-widest uppercase mb-6">{item.subtitle}</p>
-                                <p className="text-cocoa-light text-lg leading-relaxed">{item.description}</p>
+                                <h3 className="font-serif text-3xl font-bold text-deep-cocoa mb-1">{item.title}</h3>
+                                <p className="text-accent-amber font-bold text-[10px] tracking-widest uppercase mb-3">{item.subtitle}</p>
+                                <p className="text-cocoa-light text-sm leading-relaxed">{item.description}</p>
                             </div>
+                        ))}
+                    </div>
+
+                    {/* Mobile Dots Indicator - Filosofi */}
+                    <div className="flex justify-center items-center gap-2 mt-4 md:hidden">
+                        {filosofi.map((_, idx) => (
+                            <button 
+                                key={idx} 
+                                onClick={() => scrollToFilosofi(idx)}
+                                aria-label={`Go to filosofi ${idx + 1}`}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${activeFilosofi === idx ? 'w-6 bg-accent-amber' : 'w-1.5 bg-deep-cocoa/20'}`}
+                            />
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* Story Timeline */}
-            <section className="relative py-20 bg-deep-cocoa">
+            <section className="relative py-12 bg-deep-cocoa">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="text-center mb-12 text-ivory">
-                        <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-sm mb-3">Proses & Dedikasi</p>
-                        <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Setiap Produk Punya <span className="italic text-accent-amber">Cerita</span></h2>
+                    <div className="text-center mb-8 text-ivory">
+                        <p className="text-accent-amber font-medium tracking-[0.3em] uppercase text-xs mb-2">Proses & Dedikasi</p>
+                        <h2 className="font-serif text-2xl md:text-3xl font-bold">Setiap Produk Punya <span className="italic text-accent-amber">Cerita</span></h2>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-6">
+                    <div 
+                        ref={pillarRef}
+                        onScroll={handlePillarScroll}
+                        className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-smooth md:mx-0 md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
+                    >
                         {pillars.map((pillar, index) => (
-                            <div key={pillar.title} className="relative group p-8 bg-cocoa-dark/50 backdrop-blur-md rounded-[2.5rem] border border-ivory/10 hover:border-accent-amber/30 transition-all duration-500">
-                                <div className="text-accent-amber mb-6">{pillar.icon}</div>
-                                <h3 className="font-serif text-2xl font-bold text-ivory mb-2">{pillar.title}</h3>
-                                <p className="text-accent-amber text-xs font-bold tracking-widest uppercase mb-4">{pillar.subtitle}</p>
+                            <div key={pillar.title} className="w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center relative group p-6 bg-cocoa-dark/50 backdrop-blur-md rounded-2xl border border-ivory/10 hover:border-accent-amber/30 transition-all duration-500">
+                                <div className="text-accent-amber mb-4">{pillar.icon}</div>
+                                <h3 className="font-serif text-xl font-bold text-ivory mb-1">{pillar.title}</h3>
+                                <p className="text-accent-amber text-[10px] font-bold tracking-widest uppercase mb-3">{pillar.subtitle}</p>
                                 <p className="text-warm-cream/60 leading-relaxed text-sm">{pillar.description}</p>
-                                <div className="absolute top-6 right-8 text-4xl font-serif text-ivory/5">0{index + 1}</div>
+                                <div className="absolute top-4 right-6 text-3xl font-serif text-ivory/5">0{index + 1}</div>
                             </div>
+                        ))}
+                    </div>
+
+                    {/* Mobile Dots Indicator - Pillars */}
+                    <div className="flex justify-center items-center gap-2 mt-4 md:hidden">
+                        {pillars.map((_, idx) => (
+                            <button 
+                                key={idx} 
+                                onClick={() => scrollToPillar(idx)}
+                                aria-label={`Go to pillar ${idx + 1}`}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${activePillar === idx ? 'w-6 bg-accent-amber' : 'w-1.5 bg-ivory/20'}`}
+                            />
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* Vision & Mission Card */}
-            <section className="py-20 bg-warm-cream">
+            <section className="py-12 bg-warm-cream">
                 <div className="max-w-4xl mx-auto px-6 lg:px-8">
-                    <div className="bg-ivory rounded-[2.5rem] p-10 md:p-16 shadow-[0_50px_100px_rgba(61,35,20,0.08)] border border-deep-cocoa/5">
-                        <div className="grid md:grid-cols-2 gap-10">
+                    <div className="bg-ivory rounded-2xl p-8 md:p-10 shadow-[0_20px_60px_rgba(61,35,20,0.07)] border border-deep-cocoa/5">
+                        <div className="grid md:grid-cols-2 gap-8">
                             <div>
-                                <h4 className="font-serif text-2xl font-bold text-deep-cocoa mb-4 border-l-4 border-accent-amber pl-4">Visi</h4>
-                                <p className="text-cocoa-light leading-relaxed text-base">
+                                <h4 className="font-serif text-xl font-bold text-deep-cocoa mb-3 border-l-4 border-accent-amber pl-4">Visi</h4>
+                                <p className="text-cocoa-light leading-relaxed text-sm">
                                     Menjadi ikon jajanan kering premium Nusantara yang dikenal karena kualitas,
                                     elegansi, dan kemampuannya membangun kedekatan emosional dengan konsumen.
                                 </p>
                             </div>
                             <div>
-                                <h4 className="font-serif text-2xl font-bold text-deep-cocoa mb-4 border-l-4 border-accent-amber pl-4">Misi</h4>
-                                <p className="text-cocoa-light leading-relaxed text-base">
+                                <h4 className="font-serif text-xl font-bold text-deep-cocoa mb-3 border-l-4 border-accent-amber pl-4">Misi</h4>
+                                <p className="text-cocoa-light leading-relaxed text-sm">
                                     Menyajikan cita rasa pedas yang berkarakter, mengangkat nilai estetika kuliner lokal
                                     ke level premium, dan menciptakan narasi yang memperkaya pengalaman makan.
                                 </p>
@@ -171,9 +234,9 @@ const AboutPage = () => {
                         </div>
 
                         {/* Quote */}
-                        <div className="mt-12 pt-12 border-t border-deep-cocoa/5 text-center">
-                            <span className="text-3xl text-accent-amber mb-6 block">"</span>
-                            <blockquote className="font-serif text-xl md:text-2xl text-deep-cocoa leading-relaxed italic mb-6">
+                        <div className="mt-8 pt-8 border-t border-deep-cocoa/5 text-center">
+                            <span className="text-2xl text-accent-amber mb-3 block">"</span>
+                            <blockquote className="font-serif text-lg md:text-xl text-deep-cocoa leading-relaxed italic mb-4">
                                 Bukan sekadar pedas yang lewat, tapi rasa yang menetap dan bercerita tentang kehangatan dapur Nusantara.
                             </blockquote>
                             <cite className="not-italic text-accent-amber font-bold tracking-widest uppercase text-xs">— Narasi Nurasa</cite>
@@ -183,15 +246,15 @@ const AboutPage = () => {
             </section>
 
             {/* Call to Action */}
-            <section className="py-20 bg-ivory">
+            <section className="py-12 bg-ivory">
                 <div className="max-w-5xl mx-auto px-6 text-center">
-                    <h2 className="font-serif text-3xl md:text-4xl font-bold text-deep-cocoa mb-8">Rasakan Langsung <br /> Kemewahan Rasanya</h2>
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-deep-cocoa mb-6">Rasakan Langsung <br /> Kemewahan Rasanya</h2>
                     <Link 
                         to="/katalog" 
                         className="btn-primary inline-flex items-center gap-2"
                     >
                         Lihat Katalog Produk
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </Link>
