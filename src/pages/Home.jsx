@@ -23,6 +23,20 @@ const Home = () => {
       "addressLocality": "Jakarta Selatan",
       "addressCountry": "ID"
     },
+    "areaServed": "ID",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Jajanan Nusantara",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Camilan Kering Premium Indonesia"
+          }
+        }
+      ]
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+6285137143942",

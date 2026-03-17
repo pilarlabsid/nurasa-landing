@@ -44,6 +44,10 @@ export const localBusinessData = {
     "addressRegion": "DKI Jakarta",
     "addressCountry": "ID"
   },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Indonesia"
+  },
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": -6.2088,
