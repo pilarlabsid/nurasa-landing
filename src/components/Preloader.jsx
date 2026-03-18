@@ -6,9 +6,10 @@ const Preloader = () => {
     const [showUI, setShowUI] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const [shouldRender, setShouldRender] = useState(true);
-    const startTime = useRef(Date.now());
+    const startTime = useRef(0);
 
     useEffect(() => {
+        startTime.current = Date.now();
         // Always show branding after 400ms if still loading
         const uiTimer = setTimeout(() => {
             setShowUI(true);

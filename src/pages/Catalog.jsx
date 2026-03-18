@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { products, categories } from '../data/products';
@@ -152,21 +152,17 @@ const ProductCard = ({ product }) => {
 const Catalog = () => {
     const [selectedCategory, setSelectedCategory] = useState('Semua');
     const [searchTerm, setSearchTerm] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState(products);
 
-    useEffect(() => {
-        let result = products;
-        if (selectedCategory !== 'Semua') {
-            result = result.filter(p => p.category === selectedCategory);
-        }
-        if (searchTerm) {
-            result = result.filter(p => 
-                p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                p.description.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        }
-        setFilteredProducts(result);
-    }, [selectedCategory, searchTerm]);
+    let filteredProducts = products;
+    if (selectedCategory !== 'Semua') {
+        filteredProducts = filteredProducts.filter(p => p.category === selectedCategory);
+    }
+    if (searchTerm) {
+        filteredProducts = filteredProducts.filter(p => 
+            p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            p.description.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }
 
     const catalogStructuredData = {
         "@context": "https://schema.org",
@@ -212,7 +208,42 @@ const Catalog = () => {
                         "price": product.price.replace(/[^\d]/g, ''),
                         "priceValidUntil": validUntil,
                         "availability": product.isOutOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
-                        "itemCondition": "https://schema.org/NewCondition"
+                        "itemCondition": "https://schema.org/NewCondition",
+                        "hasMerchantReturnPolicy": {
+                            "@type": "MerchantReturnPolicy",
+                            "applicableCountry": "ID",
+                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                            "merchantReturnDays": "7",
+                            "returnMethod": "https://schema.org/ReturnByMail",
+                            "returnFees": "https://schema.org/FreeReturn"
+                        },
+                        "shippingDetails": {
+                            "@type": "OfferShippingDetails",
+                            "shippingRate": {
+                                "@type": "MonetaryAmount",
+                                "value": "10000",
+                                "currency": "IDR"
+                            },
+                            "shippingDestination": {
+                                "@type": "DefinedRegion",
+                                "addressCountry": "ID"
+                            },
+                            "deliveryTime": {
+                                "@type": "ShippingDeliveryTime",
+                                "handlingTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 0,
+                                    "maxValue": 1,
+                                    "unitCode": "d"
+                                },
+                                "transitTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 1,
+                                    "maxValue": 3,
+                                    "unitCode": "d"
+                                }
+                            }
+                        }
                     }
                 }
             };

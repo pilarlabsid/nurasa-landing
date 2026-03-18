@@ -1,24 +1,23 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Hero = () => {
-
-    // Reusable image block
-    const HeroImage = ({ className = '' }) => (
-        <div className={`relative animate-fade-in-up ${className}`} style={{ animationDelay: '0.2s' }}>
-            <div className="hero-img-container relative sm:max-w-sm lg:max-w-[440px] xl:max-w-md mx-auto">
-                <div className="absolute inset-0 bg-accent-amber rounded-[2rem] lg:rounded-[4rem] rotate-6 opacity-20 scale-105"></div>
-                <div className="absolute inset-0 bg-deep-cocoa rounded-[2rem] lg:rounded-[4rem] -rotate-3 opacity-10 scale-105"></div>
-                <img
-                    src="/nurasa-product.webp"
-                    alt="Nurasa Product"
-                    fetchPriority="high"
-                    loading="eager"
-                    className="relative w-full h-full object-cover rounded-[2.5rem] lg:rounded-[4rem] shadow-2xl border-4 border-ivory"
-                />
-            </div>
+// Reusable image block
+const HeroImage = ({ className = '' }) => (
+    <div className={`relative animate-fade-in-up ${className}`} style={{ animationDelay: '0.2s' }}>
+        <div className="hero-img-container relative sm:max-w-sm lg:max-w-[440px] xl:max-w-md mx-auto">
+            <div className="absolute inset-0 bg-accent-amber rounded-[2rem] lg:rounded-[4rem] rotate-6 opacity-20 scale-105"></div>
+            <div className="absolute inset-0 bg-deep-cocoa rounded-[2rem] lg:rounded-[4rem] -rotate-3 opacity-10 scale-105"></div>
+            <img
+                src="/nurasa-product.webp"
+                alt="Nurasa Product"
+                fetchPriority="high"
+                loading="eager"
+                className="relative w-full h-full object-cover rounded-[2.5rem] lg:rounded-[4rem] shadow-2xl border-4 border-ivory"
+            />
         </div>
-    );
+    </div>
+);
+
+const Hero = () => {
 
     return (
         <section
