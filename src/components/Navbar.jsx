@@ -57,6 +57,8 @@ const Navbar = () => {
                                 <img
                                     src="/logo-text.webp"
                                     alt="Nurasa"
+                                    fetchPriority="high"
+                                    loading="eager"
                                     className="h-7 lg:h-9 object-contain object-left mb-0.5 lg:mb-1 hover:scale-105 transition-transform duration-300"
                                 />
                                 <p className="text-[8px] lg:text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>

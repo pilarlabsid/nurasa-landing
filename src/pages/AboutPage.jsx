@@ -146,7 +146,7 @@ const AboutPage = () => {
                     <div 
                         ref={filosofiRef}
                         onScroll={handleFilosofiScroll}
-                        className="flex md:grid md:grid-cols-2 gap-5 max-w-4xl mx-auto overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-smooth md:mx-0 md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
+                        className="flex md:grid md:grid-cols-2 gap-5 max-w-4xl mx-auto overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-smooth md:mx-auto md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
                     >
                         {filosofi.map((item) => (
                             <div key={item.title} className="w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center group relative bg-warm-cream rounded-2xl p-8 transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
@@ -185,7 +185,7 @@ const AboutPage = () => {
                     <div 
                         ref={pillarRef}
                         onScroll={handlePillarScroll}
-                        className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-smooth md:mx-0 md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
+                        className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-smooth md:mx-auto md:px-0 md:pb-0 md:overflow-visible hide-scrollbar"
                     >
                         {pillars.map((pillar, index) => (
                             <div key={pillar.title} className="w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center relative group p-6 bg-cocoa-dark/50 backdrop-blur-md rounded-2xl border border-ivory/10 hover:border-accent-amber/30 transition-all duration-500">
@@ -227,7 +227,7 @@ const AboutPage = () => {
                             <div>
                                 <h4 className="font-serif text-xl font-bold text-deep-cocoa mb-3 border-l-4 border-accent-amber pl-4">Misi</h4>
                                 <p className="text-cocoa-light leading-relaxed text-sm">
-                                    Menyajikan cita rasa pedas yang berkarakter, mengangkat nilai estetika kuliner lokal
+                                    Menyajikan aneka varian rasa yang berkarakter, mengangkat nilai estetika kuliner lokal
                                     ke level premium, dan menciptakan narasi yang memperkaya pengalaman makan.
                                 </p>
                             </div>
@@ -237,7 +237,7 @@ const AboutPage = () => {
                         <div className="mt-8 pt-8 border-t border-deep-cocoa/5 text-center">
                             <span className="text-2xl text-accent-amber mb-3 block">"</span>
                             <blockquote className="font-serif text-lg md:text-xl text-deep-cocoa leading-relaxed italic mb-4">
-                                Bukan sekadar pedas yang lewat, tapi rasa yang menetap dan bercerita tentang kehangatan dapur Nusantara.
+                                Bukan sekadar nikmat yang sesaat, tapi aneka rasa yang menetap dan bercerita tentang kehangatan dapur Nusantara.
                             </blockquote>
                             <cite className="not-italic text-accent-amber font-bold tracking-widest uppercase text-xs">— Narasi Nurasa</cite>
                         </div>

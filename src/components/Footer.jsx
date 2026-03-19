@@ -72,7 +72,7 @@ const Footer = () => {
                         </Link>
 
                         <p className="text-cocoa-light text-sm md:text-base leading-relaxed mb-6 max-w-md">
-                            Jajanan kering premium Nusantara yang menghadirkan cita rasa pedas berkelas.
+                            Jajanan kering premium Nusantara yang menghadirkan aneka varian rasa berkelas.
                             Setiap produk dibuat dengan bahan pilihan dan proses yang penuh dedikasi.
                         </p>
 

@@ -14,7 +14,7 @@ const Home = () => {
     "name": "Nurasa",
     "url": "https://nurasa.store",
     "logo": "https://nurasa.store/logo-text.webp",
-    "description": "Jajanan kering premium Nusantara dengan cita rasa pedas berkelas.",
+    "description": "Jajanan kering premium Nusantara yang hadir dengan aneka varian rasa unik dan berkelas.",
     "sameAs": [
       "https://instagram.com/nurasa.store"
     ],
@@ -48,7 +48,7 @@ const Home = () => {
     <>
       <SEO 
         title="" 
-        description="Selamat datang di Nurasa. Nikmati jajanan kering premium Nusantara, dari Basreng yang renyah hingga Popcorn Gourmet yang lumer. Ada cerita di setiap rasa."
+        description="Selamat datang di Nurasa. Nikmati jajanan kering premium Nusantara dengan berbagai pilihan varian rasa yang menggugah selera. Ada cerita di setiap rasa."
         url="/"
       />
       <StructuredData data={webSiteData} />

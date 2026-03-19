@@ -3,9 +3,9 @@ import { Helmet } from 'react-helmet-async';
 const SEO = ({ title, description, keywords, image, url, type = 'website' }) => {
     const siteTitle = 'Nurasa - Ada Cerita di Setiap Rasa | Jajanan Kering Premium Nusantara';
     const fullTitle = title ? `${title} | Nurasa` : siteTitle;
-    const siteDescription = 'Nurasa menghadirkan jajanan kering premium Nusantara dengan cita rasa pedas berkelas. Setiap gigitan adalah awal dari sebuah cerita baru.';
+    const siteDescription = 'Nurasa menghadirkan jajanan kering premium Nusantara dengan aneka pilihan rasa berkelas. Setiap gigitan adalah awal dari sebuah cerita baru.';
     const metaDescription = description || siteDescription;
-    const metaKeywords = keywords || 'nurasa, jajanan kering, snack premium, basreng, popcorn, kuliner indonesia, cemilan pedas';
+    const metaKeywords = keywords || 'nurasa, jajanan kering, snack premium, aneka rasa, kuliner indonesia, basreng, popcorn, cemilan pedas';
     const siteUrl = 'https://nurasa.store'; // Update with actual URL if different
     const metaUrl = url ? `${siteUrl}${url}` : siteUrl;
     const metaImage = image || `${siteUrl}/og-image.webp`; // Ensure this image exists in public folder

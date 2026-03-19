@@ -40,8 +40,7 @@ const Hero = () => {
                             di Setiap <span className="italic">Rasa</span>
                         </h1>
                         <p className="max-w-xl text-lg text-cocoa-light leading-relaxed mb-10 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                            Setiap gigitan adalah awal dari sebuah cerita baru. Nikmati cita rasa pedas
-                            yang berkelas dari rempah pilihan petani lokal.
+                            Setiap gigitan adalah awal dari sebuah cerita baru. Temukan aneka pilihan varian rasa jajanan Nusantara yang dibuat sepenuh hati.
                         </p>
                         <div className="flex flex-row gap-4 justify-start items-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                             <a href="#produk" className="btn-primary px-8 py-4 text-lg">
@@ -79,8 +78,7 @@ const Hero = () => {
 
                     {/* Description */}
                     <p className="max-w-sm text-base text-cocoa-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                        Setiap gigitan adalah awal dari sebuah cerita baru. Nikmati cita rasa pedas
-                        yang berkelas dari rempah pilihan petani lokal.
+                        Setiap gigitan adalah awal dari sebuah cerita baru. Temukan aneka pilihan varian rasa jajanan Nusantara yang dibuat sepenuh hati.
                     </p>
 
                     {/* CTA side by side — single line */}

@@ -40,8 +40,8 @@ const About = () => {
                             <span className="italic text-accent-amber">Camilan Biasa.</span>
                         </h2>
                         <p className="text-cocoa-light text-base lg:text-lg leading-relaxed mb-8 lg:mb-10 opacity-80">
-                            Terinspirasi dari kekayaan rempah Nusantara, Nurasa hadir membawa 
-                            kejujuran rasa melalui proses yang telaten.
+                            Terinspirasi dari kekayaan kuliner Nusantara, Nurasa hadir membawa 
+                            aneka varian rasa istimewa melalui proses yang telaten.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-6">

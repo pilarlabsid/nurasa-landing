@@ -75,9 +75,25 @@ export const CartProvider = ({ children }) => {
 
     const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
 
-    const formatWhatsAppMessage = () => {
+    const formatWhatsAppMessage = (customerData) => {
         let message = `*Pesanan dari Website Nurasa*\n`;
         message += `──────────────\n\n`;
+        if (customerData) {
+            message += `*Data Pemesan:*\n`;
+            message += `Nama: ${customerData.name}\n`;
+            message += `No. HP/WA: ${customerData.phone}\n`;
+            message += `\n*Alamat Pengiriman:*\n`;
+            message += `${customerData.address}\n`;
+            message += `Kel. ${customerData.village}, Kec. ${customerData.district}\n`;
+            message += `${customerData.city}, Prov. ${customerData.province} - ${customerData.postalCode}\n`;
+            if (customerData.mapLat && customerData.mapLng) {
+                message += `📍 Titik Peta: https://maps.google.com/?q=${customerData.mapLat},${customerData.mapLng}\n`;
+            }
+            if (customerData.notes) {
+                message += `\n*Catatan:* ${customerData.notes}\n`;
+            }
+            message += `\n──────────────\n\n`;
+        }
         message += `Halo Nurasa! Saya ingin memesan:\n\n`;
         cart.forEach((item, index) => {
             const price = parsePrice(item.variant.price);
@@ -87,13 +103,13 @@ export const CartProvider = ({ children }) => {
             message += `   Subtotal: Rp ${(price * item.quantity).toLocaleString('id-ID')}\n\n`;
         });
         message += `*Total Pesanan: Rp ${cartTotal.toLocaleString('id-ID')}*\n\n`;
-        message += `Mohon info detail pengiriman selanjutnya ya. Terima kasih!`;
+        message += `Terima kasih!`;
         return encodeURIComponent(message);
     };
 
-    const checkoutToWhatsApp = () => {
+    const checkoutToWhatsApp = (customerData) => {
         const phoneNumber = '6285137143942'; // Nomor WA Nurasa
-        const message = formatWhatsAppMessage();
+        const message = formatWhatsAppMessage(customerData);
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     };
 

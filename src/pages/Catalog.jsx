@@ -12,9 +12,8 @@ const ProductCard = ({ product }) => {
 
     return (
         <div
-            className={`group bg-ivory rounded-[2rem] overflow-hidden border border-deep-cocoa/5 transition-all duration-500 flex flex-col h-full ${
-                product.isOutOfStock ? 'opacity-75 grayscale-[0.5]' : 'hover:shadow-[0_30px_60px_rgba(61,35,20,0.1)] hover:-translate-y-1'
-            }`}
+            className={`group bg-ivory rounded-[2rem] overflow-hidden border border-deep-cocoa/5 transition-all duration-500 flex flex-col h-full ${product.isOutOfStock ? 'opacity-75 grayscale-[0.5]' : 'hover:shadow-[0_30px_60px_rgba(61,35,20,0.1)] hover:-translate-y-1'
+                }`}
         >
             {/* Image Container - Reduced Height */}
             <div className="relative h-48 sm:h-56 lg:h-60 overflow-hidden shrink-0">
@@ -23,7 +22,7 @@ const ProductCard = ({ product }) => {
                     alt={product.name}
                     className={`w-full h-full object-cover transition-transform duration-700 ${!product.isOutOfStock && 'group-hover:scale-105'}`}
                 />
-                
+
                 {/* Category Badge */}
                 <span className="absolute top-4 left-4 px-3 py-1 bg-ivory/95 backdrop-blur-md rounded-full text-[9px] font-bold tracking-widest uppercase text-deep-cocoa shadow-sm">
                     {product.category}
@@ -43,9 +42,8 @@ const ProductCard = ({ product }) => {
                                 </span>
                             )}
                             {product.badge && !selectedVariant.originalPrice && (
-                                <span className={`px-3 py-1 rounded-full text-ivory text-[9px] font-bold tracking-widest uppercase shadow-lg ${
-                                    product.badge === 'Hot!' || product.badge === 'New Arrival' ? 'bg-accent-red' : 'bg-accent-amber'
-                                }`}>
+                                <span className={`px-3 py-1 rounded-full text-ivory text-[9px] font-bold tracking-widest uppercase shadow-lg ${product.badge === 'Hot!' || product.badge === 'New Arrival' ? 'bg-accent-red' : 'bg-accent-amber'
+                                    }`}>
                                     {product.badge}
                                 </span>
                             )}
@@ -91,14 +89,13 @@ const ProductCard = ({ product }) => {
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                         {product.variants.map(v => (
-                            <button 
+                            <button
                                 key={v.id}
                                 onClick={() => setSelectedVariant(v)}
-                                className={`relative py-2.5 px-2 rounded-xl border-2 transition-all duration-300 ${
-                                    selectedVariant.id === v.id 
-                                    ? 'bg-ivory border-accent-amber shadow-sm' 
-                                    : 'bg-transparent border-deep-cocoa/5 hover:border-deep-cocoa/15 text-cocoa-light'
-                                }`}
+                                className={`relative py-2.5 px-2 rounded-xl border-2 transition-all duration-300 ${selectedVariant.id === v.id
+                                        ? 'bg-ivory border-accent-amber shadow-sm'
+                                        : 'bg-transparent border-deep-cocoa/5 hover:border-deep-cocoa/15 text-cocoa-light'
+                                    }`}
                             >
                                 <span className={`block text-[11px] font-bold mb-0.5 ${selectedVariant.id === v.id ? 'text-deep-cocoa' : ''}`}>
                                     {v.label || v.size}
@@ -121,13 +118,12 @@ const ProductCard = ({ product }) => {
                             setTimeout(() => setAdded(false), 2000);
                         }}
                         disabled={product.isOutOfStock}
-                        className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 shadow-md group/btn ${
-                            product.isOutOfStock
-                            ? 'bg-deep-cocoa/20 text-deep-cocoa/40 cursor-not-allowed'
-                            : added 
-                                ? 'bg-green-600 text-ivory' 
-                                : 'bg-deep-cocoa text-ivory hover:bg-accent-amber'
-                        }`}
+                        className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-300 shadow-md group/btn ${product.isOutOfStock
+                                ? 'bg-deep-cocoa/20 text-deep-cocoa/40 cursor-not-allowed'
+                                : added
+                                    ? 'bg-green-600 text-ivory'
+                                    : 'bg-deep-cocoa text-ivory hover:bg-accent-amber'
+                            }`}
                     >
                         <span className="text-xs font-bold uppercase tracking-wider">
                             {product.isOutOfStock ? 'Stok Habis' : added ? 'Berhasil Ditambahkan!' : 'Tambah ke Keranjang'}
@@ -138,9 +134,7 @@ const ProductCard = ({ product }) => {
                             </svg>
                         )}
                         {added && (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
+                            <div className="w-4 h-4" />
                         )}
                     </button>
                 </div>
@@ -158,7 +152,7 @@ const Catalog = () => {
         filteredProducts = filteredProducts.filter(p => p.category === selectedCategory);
     }
     if (searchTerm) {
-        filteredProducts = filteredProducts.filter(p => 
+        filteredProducts = filteredProducts.filter(p =>
             p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             p.description.toLowerCase().includes(searchTerm.toLowerCase())
         );
@@ -252,9 +246,9 @@ const Catalog = () => {
 
     return (
         <div className="pt-24 lg:pt-28 pb-16 min-h-screen bg-warm-cream">
-            <SEO 
-                title="Katalog Produk" 
-                description="Jelajahi koleksi lengkap camilan premium Nurasa. Basreng berbagai level pedas dan Popcorn Gourmet dengan rasa istimewa."
+            <SEO
+                title="Katalog Produk"
+                description="Jelajahi koleksi lengkap camilan premium Nurasa dengan berbagai pilihan varian rasa yang menggugah selera."
                 url="/katalog"
             />
             <StructuredData data={catalogStructuredData} />
@@ -280,7 +274,7 @@ const Catalog = () => {
                         Katalog <span className="text-accent-amber italic">Nurasa</span>
                     </h1>
                     <p className="text-cocoa-light text-sm max-w-2xl mx-auto">
-                        Jelajahi seluruh koleksi jajanan premium kami. Dari renyahnya Basreng hingga lezatnya Popcorn Gourmet.
+                        Jelajahi seluruh koleksi jajanan premium kami. Menghadirkan beragam varian rasa yang diciptakan untuk memanjakan lidah Anda.
                     </p>
                 </div>
 
@@ -292,11 +286,10 @@ const Catalog = () => {
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
-                                className={`px-4 lg:px-5 py-2.5 rounded-xl text-xs font-medium transition-all duration-300 whitespace-nowrap ${
-                                    selectedCategory === cat
+                                className={`px-4 lg:px-5 py-2.5 rounded-xl text-xs font-medium transition-all duration-300 whitespace-nowrap ${selectedCategory === cat
                                         ? 'bg-deep-cocoa text-ivory shadow-lg transform scale-105'
                                         : 'text-cocoa-light hover:bg-warm-cream'
-                                }`}
+                                    }`}
                             >
                                 {cat}
                             </button>

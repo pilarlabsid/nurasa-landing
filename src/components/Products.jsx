@@ -45,7 +45,7 @@ const Products = () => {
                         Produk <span className="italic text-accent-amber">Pilihan</span> Kami
                     </h2>
                     <p className="max-w-2xl mx-auto text-cocoa-light text-base lg:text-lg">
-                        Dari Basreng yang renyah hingga Popcorn Gourmet yang lumer.
+                        Menghadirkan berbagai varian rasa jajanan Nusantara yang siap menebar kebahagiaan.
                     </p>
                 </div>
 
@@ -145,7 +145,7 @@ const Products = () => {
                 {/* Gift Ready Section */}
                 <div className="mt-16 lg:mt-20 text-center">
                     <a
-                        href={`https://wa.me/6285137143942?text=${encodeURIComponent('🌐 *Pesan dari Website Nurasa*\n────────────────────\n\nHalo Nurasa, saya ingin pesan Basreng untuk hadiah. Mohon infonya ya!')}`}
+                        href={`https://wa.me/6285137143942?text=${encodeURIComponent('🌐 *Pesan dari Website Nurasa*\n────────────────────\n\nHalo Nurasa, saya ingin pesan camilan Nurasa untuk hadiah. Mohon infonya ya!')}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex flex-col sm:flex-row items-center gap-4 bg-ivory rounded-[2rem] px-6 lg:px-8 py-5 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer max-w-lg mx-auto"
