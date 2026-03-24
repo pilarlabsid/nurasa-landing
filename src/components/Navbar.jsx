@@ -26,6 +26,18 @@ const Navbar = () => {
         { name: 'Kontak', href: '/kontak' },
     ];
 
+    // Prefetch magic: Load the page Javascript chunk instantly when the user hovers over the menu
+    // By the time they actually click (100-300ms later), the page is already fully downloaded!
+    const prefetchRoute = (href) => {
+        switch(href) {
+            case '/': import('../pages/Home'); break;
+            case '/katalog': import('../pages/Catalog'); break;
+            case '/tentang': import('../pages/AboutPage'); break;
+            case '/kontak': import('../pages/Contact'); break;
+            default: break;
+        }
+    };
+
     // Compute navbar classes and styles
     const navClasses = isHomePage
         ? isScrolled
@@ -71,6 +83,8 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.href}
+                                    onMouseEnter={() => prefetchRoute(link.href)}
+                                    onFocus={() => prefetchRoute(link.href)}
                                     className="relative text-deep-cocoa font-medium hover:text-accent-amber transition-colors duration-300 group"
                                 >
                                     {link.name}
@@ -95,7 +109,11 @@ const Navbar = () => {
                                     </span>
                                 )}
                             </button>
-                            <Link to="/katalog" className="btn-primary text-sm px-6 py-2.5">
+                            <Link 
+                                to="/katalog" 
+                                onMouseEnter={() => prefetchRoute('/katalog')}
+                                className="btn-primary text-sm px-6 py-2.5"
+                            >
                                 Lihat Katalog
                             </Link>
                         </div>
@@ -157,6 +175,7 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.href}
+                                    onMouseEnter={() => prefetchRoute(link.href)}
                                     className={`block font-medium transition-all duration-300 ${location.pathname === link.href ? 'text-accent-amber' : 'text-deep-cocoa hover:text-accent-amber'
                                         }`}
                                     onClick={() => setIsMobileMenuOpen(false)}
@@ -167,6 +186,7 @@ const Navbar = () => {
                             <div className="pt-2">
                                 <Link
                                     to="/katalog"
+                                    onMouseEnter={() => prefetchRoute('/katalog')}
                                     className="btn-primary w-full text-center text-sm font-bold uppercase tracking-wider block py-3.5 rounded-xl shadow-lg"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
