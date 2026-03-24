@@ -172,7 +172,7 @@ const Catalog = () => {
                 "item": {
                     "@type": "Product",
                     "name": product.name,
-                    "image": `https://nurasa.store${product.image}`, // Use proper path
+                    "image": `https://www.nurasa.store${product.image}`, // Use proper path
                     "description": product.description,
                     "brand": {
                         "@type": "Brand",
@@ -197,7 +197,7 @@ const Catalog = () => {
                     },
                     "offers": {
                         "@type": "Offer",
-                        "url": `https://nurasa.store/katalog`,
+                        "url": `https://www.nurasa.store/katalog`,
                         "priceCurrency": "IDR",
                         "price": product.price.replace(/[^\d]/g, ''),
                         "priceValidUntil": validUntil,

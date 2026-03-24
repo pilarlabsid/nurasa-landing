@@ -2,7 +2,7 @@ export const webSiteData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Nurasa",
-  "url": "https://nurasa.store"
+  "url": "https://www.nurasa.store"
 };
 
 export const siteNavigationData = {
@@ -13,19 +13,19 @@ export const siteNavigationData = {
       "@type": "SiteNavigationElement",
       "position": 1,
       "name": "Katalog Produk",
-      "url": "https://nurasa.store/katalog"
+      "url": "https://www.nurasa.store/katalog"
     },
     {
       "@type": "SiteNavigationElement",
       "position": 2,
       "name": "Tentang Kami",
-      "url": "https://nurasa.store/tentang"
+      "url": "https://www.nurasa.store/tentang"
     },
     {
       "@type": "SiteNavigationElement",
       "position": 3,
       "name": "Hubungi Kami",
-      "url": "https://nurasa.store/kontak"
+      "url": "https://www.nurasa.store/kontak"
     }
   ]
 };
@@ -34,9 +34,9 @@ export const localBusinessData = {
   "@context": "https://schema.org",
   "@type": "FoodEstablishment",
   "name": "Nurasa",
-  "image": "https://nurasa.store/og-image.webp",
-  "@id": "https://nurasa.store",
-  "url": "https://nurasa.store",
+  "image": "https://www.nurasa.store/og-image.webp",
+  "@id": "https://www.nurasa.store",
+  "url": "https://www.nurasa.store",
   "telephone": "+6285137143942",
   "address": {
     "@type": "PostalAddress",

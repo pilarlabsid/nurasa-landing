@@ -12,8 +12,8 @@ const Home = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Nurasa",
-    "url": "https://nurasa.store",
-    "logo": "https://nurasa.store/logo-text.webp",
+    "url": "https://www.nurasa.store",
+    "logo": "https://www.nurasa.store/logo-text.webp",
     "description": "Jajanan kering premium Nusantara yang hadir dengan aneka varian rasa unik dan berkelas.",
     "sameAs": [
       "https://instagram.com/nurasa.store"

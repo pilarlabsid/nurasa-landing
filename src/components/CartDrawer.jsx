@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import MapPickerModal from './MapPickerModal';
+const MapPickerModal = React.lazy(() => import('./MapPickerModal'));
 
 const CartDrawer = ({ isOpen, onClose }) => {
     const {
@@ -32,7 +32,12 @@ const CartDrawer = ({ isOpen, onClose }) => {
         };
     });
 
+    const [hasOpenedMap, setHasOpenedMap] = useState(false);
     const [showMap, setShowMap] = useState(false);
+    
+    useEffect(() => {
+        if (showMap) setHasOpenedMap(true);
+    }, [showMap]);
     const [mapCoords, setMapCoords] = useState(() => {
         if (customerData.mapLat && customerData.mapLng) {
             return { lat: customerData.mapLat, lng: customerData.mapLng };
@@ -247,13 +252,17 @@ const CartDrawer = ({ isOpen, onClose }) => {
 
     return (
         <>
-            <MapPickerModal
-                isOpen={showMap}
-                onClose={() => setShowMap(false)}
-                onConfirm={handleMapConfirm}
-                initialCoords={mapCoords}
-                searchFallback={`${customerData.district}, ${customerData.city}, ${customerData.province}`.replace(/^, |, $/g, '')}
-            />
+            {hasOpenedMap && (
+                <React.Suspense fallback={null}>
+                    <MapPickerModal
+                        isOpen={showMap}
+                        onClose={() => setShowMap(false)}
+                        onConfirm={handleMapConfirm}
+                        initialCoords={mapCoords}
+                        searchFallback={`${customerData.district}, ${customerData.city}, ${customerData.province}`.replace(/^, |, $/g, '')}
+                    />
+                </React.Suspense>
+            )}
             <div className="fixed inset-0 z-[100] overflow-hidden flex items-end justify-center sm:items-stretch sm:justify-end">
                 {/* Backdrop with fade-in/out */}
                 <div

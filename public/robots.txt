@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nurasa.store/sitemap.xml
+Sitemap: https://www.nurasa.store/sitemap.xml
