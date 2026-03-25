@@ -99,8 +99,10 @@ const Testimonials = () => {
                             key={idx} 
                             onClick={() => scrollTo(idx)}
                             aria-label={`Go to slide ${idx + 1}`}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-6 bg-accent-amber' : 'w-1.5 bg-ivory/20'}`}
-                        />
+                            className="p-3 focus:outline-none"
+                        >
+                            <div className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-6 bg-accent-amber' : 'w-1.5 bg-ivory/20'}`} />
+                        </button>
                     ))}
                 </div>
             </div>
