@@ -79,7 +79,9 @@ const Preloader = () => {
                     <img
                         src={logoText}
                         alt="Nurasa Logo"
-                        className="h-12 md:h-14 object-contain"
+                        width="428"
+                        height="99"
+                        className="h-12 md:h-14 w-auto object-contain"
                     />
                     <p
                         style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '0.22em' }}

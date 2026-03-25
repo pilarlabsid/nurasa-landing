@@ -65,6 +65,10 @@ const Products = () => {
                                 <img
                                     src={product.image}
                                     alt={product.name}
+                                    width="640"
+                                    height="640"
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-deep-cocoa/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>

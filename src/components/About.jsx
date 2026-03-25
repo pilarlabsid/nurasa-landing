@@ -16,7 +16,11 @@ const About = () => {
                         <div className="relative aspect-[4/5] bg-ivory rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-2xl border border-deep-cocoa/5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-700">
                              <img 
                                 src={basrengLifestyle} 
-                                alt="Nurasa Lifestyle" 
+                                alt="Nurasa Lifestyle - Jajanan Kering Premium" 
+                                width="720"
+                                height="967"
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                              />
                              <div className="absolute inset-0 bg-gradient-to-t from-deep-cocoa/60 via-transparent to-transparent opacity-60"></div>
