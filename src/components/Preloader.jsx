@@ -10,16 +10,16 @@ const Preloader = () => {
 
     useEffect(() => {
         startTime.current = Date.now();
-        // Always show branding after 400ms if still loading
+        // Show branding quickly (200ms)
         const uiTimer = setTimeout(() => {
             setShowUI(true);
             setIsAnimating(true);
-        }, 400);
+        }, 200);
 
         const hide = () => {
             const elapsed = Date.now() - startTime.current;
-            // Ensure preloader is visible for at least 800ms to cover font/style rendering
-            const remaining = Math.max(0, 800 - elapsed);
+            // Minimum 300ms visibility - just enough to prevent bare flash
+            const remaining = Math.max(0, 300 - elapsed);
             setTimeout(() => {
                 setIsVisible(false);
             }, remaining);
@@ -28,10 +28,10 @@ const Preloader = () => {
         const handleLoad = async () => {
             try {
                 await Promise.all([
-                    // Wait for window load (images, scripts)
+                    // Wait for DOM to be interactive (not full load - that waits for all images)
                     new Promise(resolve => {
-                        if (document.readyState === 'complete') resolve();
-                        else window.addEventListener('load', resolve, { once: true });
+                        if (document.readyState !== 'loading') resolve();
+                        else document.addEventListener('DOMContentLoaded', resolve, { once: true });
                     }),
                     // Wait for fonts to be fully applied
                     document.fonts.ready
@@ -44,8 +44,8 @@ const Preloader = () => {
 
         handleLoad();
 
-        // Absolute fallback: never block user more than 5s
-        const fallback = setTimeout(() => hide(), 5000);
+        // Absolute fallback: never block user more than 3s
+        const fallback = setTimeout(() => hide(), 3000);
 
         return () => {
             clearTimeout(uiTimer);

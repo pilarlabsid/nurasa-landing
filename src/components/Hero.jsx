@@ -8,11 +8,13 @@ const HeroImage = ({ className = '' }) => (
             <div className="absolute inset-0 bg-deep-cocoa rounded-[2rem] lg:rounded-[4rem] -rotate-3 opacity-10 scale-105"></div>
             <img
                 src="/nurasa-product.webp"
-                alt="Nurasa Product"
+                alt="Produk Nurasa - Jajanan Kering Premium Nusantara"
                 width="800"
-                height="1000"
+                height="764"
                 fetchPriority="high"
                 loading="eager"
+                decoding="async"
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 384px, 440px"
                 className="relative w-full h-full object-cover rounded-[2.5rem] lg:rounded-[4rem] shadow-2xl border-4 border-ivory"
             />
         </div>

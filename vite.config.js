@@ -39,12 +39,22 @@ export default defineConfig({
     port: 4000,
   },
   build: {
+    // Target modern browsers to reduce polyfills and bundle size
+    target: ['es2020', 'chrome80', 'safari14', 'firefox79'],
     chunkSizeWarningLimit: 1500,
+    // Use esbuild for minification (faster + good compression)
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+            if (id.includes('react-dom')) {
+              return 'vendor-react-dom';
+            }
+            if (id.includes('react-router-dom') || id.includes('react-router')) {
+              return 'vendor-router';
+            }
+            if (id.includes('react')) {
               return 'vendor-react';
             }
             if (id.includes('maplibre-gl')) {
@@ -56,6 +66,9 @@ export default defineConfig({
             if (id.includes('lucide-react') || id.includes('@iconify')) {
               return 'vendor-icons';
             }
+            if (id.includes('react-helmet')) {
+              return 'vendor-seo';
+            }
             return 'vendor'; // all other dependencies
           }
         }
@@ -63,3 +76,4 @@ export default defineConfig({
     }
   }
 })
+
