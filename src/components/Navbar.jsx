@@ -57,12 +57,12 @@ const Navbar = () => {
                                 <img
                                     src="/logo-text.webp"
                                     alt="Nurasa"
-                                    width="428"
-                                    height="99"
+                                    width="320"
+                                    height="75"
                                     fetchPriority="high"
                                     loading="eager"
                                     decoding="async"
-                                    sizes="(max-width: 1024px) 168px, 216px"
+                                    sizes="(max-width: 1024px) 112px, 144px"
                                     className="h-7 lg:h-9 w-auto object-contain object-left mb-0.5 lg:mb-1 hover:scale-105 transition-transform duration-300"
                                 />
                                 <p className="text-[8px] lg:text-xs text-cocoa-light italic">Ada Cerita di Setiap Rasa</p>

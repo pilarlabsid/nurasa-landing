@@ -105,7 +105,7 @@ const Products = () => {
                                 {/* Price & Action */}
                                 <div className="flex items-center justify-between gap-4 mt-auto pt-6 border-t border-deep-cocoa/5">
                                     <div className="flex flex-col">
-                                        <span className="text-[9px] text-cocoa-light/40 font-bold uppercase tracking-widest mb-0.5">Mulai dari</span>
+                                        <span className="text-[9px] text-cocoa-light/70 font-bold uppercase tracking-widest mb-0.5">Mulai dari</span>
                                         <p className="font-bold text-lg lg:text-xl text-deep-cocoa">{product.variants ? product.variants[0].price : product.price}</p>
                                     </div>
                                     <Link

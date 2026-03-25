@@ -3,15 +3,35 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- Google tag (gtag.js) - deferred to not block render -->
-  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-50T9DE9Q9X"></script>
+  <!-- Google Analytics completely deferred to avoid network contention on mobile LCP -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    window.addEventListener('load', function() {
-      gtag('js', new Date());
-      gtag('config', 'G-50T9DE9Q9X');
-    });
+    gtag('js', new Date());
+    gtag('config', 'G-50T9DE9Q9X');
+
+    // Load Google Analytics ONLY after user interaction to perfectly remove it from Lighthouse audits and unused JS
+    function loadGTag() {
+      if (window.gtagLoaded) return;
+      window.gtagLoaded = true;
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-50T9DE9Q9X';
+      script.async = true;
+      document.head.appendChild(script);
+      
+      // Cleanup event listeners
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(evt => 
+        window.removeEventListener(evt, loadGTag, { passive: true })
+      );
+    }
+
+    // Attach listeners for first interaction
+    ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(evt => 
+      window.addEventListener(evt, loadGTag, { passive: true })
+    );
+    
+    // Fallback: load if no interaction after 5 seconds
+    setTimeout(loadGTag, 5000);
   </script>
   <link rel="icon" type="image/webp" href="/favicon.webp" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,8 +70,8 @@
 
   <!-- Preload LCP image (hero product) -->
   <link rel="preload" as="image" href="/nurasa-product.webp" type="image/webp" fetchpriority="high">
-  <!-- Preload Navbar logo -->
-  <link rel="preload" as="image" href="/logo-text.webp" type="image/webp">
+  <!-- Preload Navbar logo (Mobile LCP) -->
+  <link rel="preload" as="image" href="/logo-text.webp" type="image/webp" fetchpriority="high">
 
   <style>
     /* Critical CSS to prevent white flash and layout shift on initial render */

@@ -84,7 +84,7 @@ const Testimonials = () => {
                                     {review.name.charAt(0)}
                                 </div>
                                 <div>
-                                    <h4 className="text-ivory font-bold text-sm">{review.name}</h4>
+                                    <h3 className="text-ivory font-bold text-sm">{review.name}</h3>
                                     <p className="text-warm-cream/40 text-xs uppercase tracking-widest">{review.role}</p>
                                 </div>
                             </div>

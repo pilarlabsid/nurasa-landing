@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import logoText from '../assets/logo/NurasaText.webp';
 
 const Preloader = () => {
     const [isVisible, setIsVisible] = useState(true);
@@ -77,10 +76,13 @@ const Preloader = () => {
                 {/* Branding */}
                 <div className="flex flex-col items-center mb-10">
                     <img
-                        src={logoText}
+                        src="/logo-text.webp"
                         alt="Nurasa Logo"
-                        width="428"
-                        height="99"
+                        width="320"
+                        height="75"
+                        fetchPriority="high"
+                        loading="eager"
+                        decoding="async"
                         className="h-12 md:h-14 w-auto object-contain"
                     />
                     <p

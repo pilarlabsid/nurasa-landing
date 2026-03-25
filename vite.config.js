@@ -8,6 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'inline',
       includeAssets: ['favicon.webp', 'logo-text.webp', '/src/assets/general/basreng-lifestyle.webp'],
       manifest: {
         name: 'Nurasa - Camilan Premium',

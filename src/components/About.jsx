@@ -17,8 +17,8 @@ const About = () => {
                              <img 
                                 src={basrengLifestyle} 
                                 alt="Nurasa Lifestyle - Jajanan Kering Premium" 
-                                width="720"
-                                height="967"
+                                width="640"
+                                height="860"
                                 loading="lazy"
                                 decoding="async"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"

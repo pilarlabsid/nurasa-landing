@@ -9,8 +9,8 @@ const HeroImage = ({ className = '' }) => (
             <img
                 src="/nurasa-product.webp"
                 alt="Produk Nurasa - Jajanan Kering Premium Nusantara"
-                width="800"
-                height="764"
+                width="640"
+                height="612"
                 fetchPriority="high"
                 loading="eager"
                 decoding="async"
