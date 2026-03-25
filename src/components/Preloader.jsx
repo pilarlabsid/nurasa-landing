@@ -78,8 +78,8 @@ const Preloader = () => {
                     <img
                         src="/logo-text.webp"
                         alt="Nurasa Logo"
-                        width="320"
-                        height="75"
+                        width="256"
+                        height="60"
                         fetchPriority="high"
                         loading="eager"
                         decoding="async"

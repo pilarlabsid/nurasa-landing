@@ -65,8 +65,8 @@ const Footer = () => {
                                 <img
                                     src="/logo-text.webp"
                                     alt="Nurasa"
-                                    width="320"
-                                    height="75"
+                                    width="256"
+                                    height="60"
                                     loading="lazy"
                                     decoding="async"
                                     className="h-7 md:h-9 w-auto object-contain object-left mb-1"
