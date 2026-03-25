@@ -24,11 +24,12 @@ const TopProgressBar = () => {
 
         // Finish the progress bar quickly
         const timeout = setTimeout(() => {
+            clearInterval(interval); // Prevent interval from pushing it back to 90
             setProgress(100);
             setTimeout(() => {
                 setVisible(false);
-            }, 300); // Wait for CSS transition to hit 100% before hiding
-        }, 600); // 600ms initial load fake timing
+            }, 400); // Wait for CSS transition (200ms) to finish smoothly before hiding
+        }, 800); // Wait a bit longer to simulate real load before closing
 
         return () => {
             clearTimeout(startTimeout);
