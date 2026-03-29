@@ -12,7 +12,7 @@ const Home = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Nurasa",
-    "url": "https://www.nurasa.store",
+    "url": "https://www.nurasa.store/",
     "logo": "https://www.nurasa.store/logo-text.webp",
     "description": "Jajanan kering premium Nusantara yang hadir dengan aneka varian rasa unik dan berkelas.",
     "sameAs": [

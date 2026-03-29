@@ -2,7 +2,7 @@ export const webSiteData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Nurasa",
-  "url": "https://www.nurasa.store"
+  "url": "https://www.nurasa.store/"
 };
 
 export const siteNavigationData = {
@@ -35,8 +35,8 @@ export const localBusinessData = {
   "@type": "FoodEstablishment",
   "name": "Nurasa",
   "image": "https://www.nurasa.store/og-image.webp",
-  "@id": "https://www.nurasa.store",
-  "url": "https://www.nurasa.store",
+  "@id": "https://www.nurasa.store/",
+  "url": "https://www.nurasa.store/",
   "telephone": "+6285137143942",
   "address": {
     "@type": "PostalAddress",

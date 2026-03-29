@@ -6,9 +6,23 @@ const SEO = ({ title, description, keywords, image, url, type = 'website' }) => 
     const siteDescription = 'Nurasa menghadirkan jajanan kering premium Nusantara dengan aneka pilihan rasa berkelas. Setiap gigitan adalah awal dari sebuah cerita baru.';
     const metaDescription = description || siteDescription;
     const metaKeywords = keywords || 'nurasa, jajanan kering, snack premium, aneka rasa, kuliner indonesia, basreng, popcorn, cemilan pedas';
-    const siteUrl = 'https://www.nurasa.store'; // Update with actual URL if different
-    const metaUrl = url ? `${siteUrl}${url}` : siteUrl;
-    const metaImage = image || `${siteUrl}/og-image.webp`; // Ensure this image exists in public folder
+    const siteUrl = 'https://www.nurasa.store';
+    
+    // Normalize metaUrl: ensure it doesn't have duplicate slashes and is consistent
+    let metaUrl = siteUrl;
+    if (url) {
+        if (url === '/') {
+            metaUrl = `${siteUrl}/`;
+        } else {
+            // Ensure url starts with / if it doesn't, but avoid //
+            const cleanPath = url.startsWith('/') ? url : `/${url}`;
+            metaUrl = `${siteUrl}${cleanPath}`;
+        }
+    } else {
+        metaUrl = `${siteUrl}/`;
+    }
+
+    const metaImage = image || `${siteUrl}/og-image.webp`;
 
     return (
         <Helmet>
